@@ -1,0 +1,120 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode blend_premul_alpha;
+uniform bool mirror_x;
+uniform bool mirror_y;
+
+void fragment()
+{
+	if(UV.x <= 0.5)
+	{
+		if(mirror_x)
+		{
+			if(mirror_y)
+			{
+				if(UV.y <= 0.5)
+				{
+					COLOR = texture(TEXTURE, vec2(UV.x, UV.y));
+				}
+				else
+				{
+					COLOR = texture(TEXTURE, vec2(UV.x, 1.0-UV.y));
+				}
+			}
+			else
+			{
+				if(UV.y <= 0.5)
+				{
+					COLOR = texture(TEXTURE, vec2(UV.x, UV.y));
+				}
+				else
+				{
+					COLOR = texture(TEXTURE, vec2(UV.x, UV.y));
+				}
+			}
+		}
+		else
+		{
+			if(mirror_y)
+			{
+				if(UV.y <= 0.5)
+				{
+					COLOR = texture(TEXTURE, vec2(UV.x, UV.y));
+				}
+				else
+				{
+					COLOR = texture(TEXTURE, vec2(UV.x, 1.0-UV.y));
+				}
+			}
+			else
+			{
+				if(UV.y <= 0.5)
+				{
+					COLOR = texture(TEXTURE, vec2(UV.x, UV.y));
+				}
+				else
+				{
+					COLOR = texture(TEXTURE, vec2(UV.x, UV.y));
+				}
+			}
+		}
+	}else{
+		if(mirror_x)
+		{
+			if(mirror_y)
+			{
+				if(UV.y >= 0.5)
+				{
+					COLOR = texture(TEXTURE, vec2(1.0-UV.x, 1.0-UV.y));
+				}
+				else
+				{
+					COLOR = texture(TEXTURE, vec2(1.0-UV.x, UV.y));
+				}
+			}
+			else
+			{
+				if(UV.y >= 0.5)
+				{
+					COLOR = texture(TEXTURE, vec2(1.0-UV.x, UV.y));
+				}
+				else
+				{
+					COLOR = texture(TEXTURE, vec2(1.0-UV.x, UV.y));
+				}
+			}
+		}
+		else
+		{
+			if(mirror_y)
+			{
+				if(UV.y >= 0.5)
+				{
+					COLOR = texture(TEXTURE, vec2(UV.x, 1.0-UV.y));
+				}
+				else
+				{
+					COLOR = texture(TEXTURE, vec2(UV.x, UV.y));
+				}
+			}
+			else
+			{
+				if(UV.y >= 0.5)
+				{
+					COLOR = texture(TEXTURE, vec2(UV.x, UV.y));
+				}
+				else
+				{
+					COLOR = texture(TEXTURE, vec2(UV.x, UV.y));
+				}
+			}
+		}
+	}
+}"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/mirror_x = false
+shader_param/mirror_y = false

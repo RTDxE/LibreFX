@@ -1,0 +1,33 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+uniform vec2 offset;
+uniform float power = 0.0;
+void fragment()
+{
+
+	vec2 uv = fract(UV+offset);
+	vec4 a = texture(TEXTURE, uv);
+	vec4 b = texture(TEXTURE, vec2(1.0-uv.x, uv.y));
+	vec4 c = texture(TEXTURE, vec2(uv.x, 1.0-uv.y));
+	vec4 d = texture(TEXTURE, 1.0-uv);
+	
+	//float xx = 1.0 - pow(UV.x, power);
+	//float yy = 1.0 - pow(UV.y, power);
+	
+	float xx=1.0-clamp((uv.x-power)/(1.0-power),0.0,1.0);
+	float yy=1.0-clamp((uv.y-power)/(1.0-power),0.0,1.0);
+	
+	vec4 ab = mix(a,b,xx);
+	vec4 cd = mix(c,d,yy);
+	vec4 u = mix(ab,cd,yy);
+	
+	COLOR = u;
+}"
+custom_defines = ""
+
+[resource]
+shader = SubResource( 1 )
+shader_param/offset = Vector2( 0, 0 )
+shader_param/power = 0.5

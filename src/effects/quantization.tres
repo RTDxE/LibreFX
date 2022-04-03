@@ -1,0 +1,78 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=2]
+
+[ext_resource path="res://dither2.png" type="Texture" id=1]
+[ext_resource path="res://colour1.png" type="Texture" id=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode blend_premul_alpha;
+uniform int color_count:hint_range(1,256);
+uniform sampler2D palette;
+uniform sampler2D dither;
+uniform vec2 tex_size = vec2(256.0,256.0);
+uniform float dither_amount:hint_range(0.0,0.2);
+uniform float alpha_threshold:hint_range(0.0,1.0);
+
+float overlay(float base, float top)
+{
+     if (base < 0.5){
+          return 2.0 * base*top;
+     }
+     else {
+          return 1.0 - 2.0 * (1.0 - base) *(1.0 - top);
+     }
+}
+
+vec4 nearest(vec4 col, float psize)
+{
+	vec3 previous = vec3 (100.0*255.0);	
+	//vec4 ref = clamp (col, 0.0, 255.0);
+	
+	/*
+	float dist = 1000.0;
+	float uv = 0.0;
+	for(float i=0.0; i < 1.0; i+= psize)
+	{
+		vec4 p = texture(palette, vec2(i,0));
+		float len = distance(col, p);
+		if(len < dist)
+		{
+			dist = len;
+			uv = i;
+		}
+	}
+	return texture(palette, vec2(uv,0));
+	*/
+	
+	float incr = 0.004;
+	float loop = incr * float(color_count);
+	for(float i=0.0; i < loop; i+= incr)
+	{
+		vec3 new_col = texture(palette, vec2(i,0)).rgb;
+		previous = mix (new_col, previous, step (length (previous-col.rgb*col.a), length (new_col-col.rgb*col.a)));
+	}
+	return vec4(previous, step(alpha_threshold,col.a));
+
+}
+
+void fragment()
+{
+	vec4 col = texture(TEXTURE, UV);
+	vec4 dith = texture(dither, UV*(tex_size/32.0));
+	vec4 over = col;
+	over.r = overlay(col.r, dith.r);
+	over.g = overlay(col.g, dith.g);
+	over.b = overlay(col.b, dith.b);
+	over.a = overlay(col.a, dith.r); //dither has no alpha, so use red
+	COLOR = nearest(mix(col, over, dither_amount), TEXTURE_PIXEL_SIZE.x);
+}"
+
+[resource]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/color_count = 1
+shader_param/tex_size = Vector2( 0, 0 )
+shader_param/dither_amount = 0.045
+shader_param/alpha_threshold = null
+shader_param/palette = ExtResource( 2 )
+shader_param/dither = ExtResource( 1 )

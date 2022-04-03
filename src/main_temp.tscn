@@ -1,0 +1,2311 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://check_ticked.png" type="Texture" id=1]
+[ext_resource path="res://check_empty.png" type="Texture" id=2]
+[ext_resource path="res://Fonts/OpenSans-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://main.gd" type="Script" id=4]
+[ext_resource path="res://LanguageMenu.gd" type="Script" id=5]
+[ext_resource path="res://ParticleEditor.gd" type="Script" id=6]
+[ext_resource path="res://PropertyGrid.gd" type="Script" id=7]
+[ext_resource path="res://Camera.gd" type="Script" id=8]
+[ext_resource path="res://Preview.gd" type="Script" id=9]
+[ext_resource path="res://PostPreview.gd" type="Script" id=10]
+[ext_resource path="res://TabContainer.gd" type="Script" id=11]
+[ext_resource path="res://RenderTab.gd" type="Script" id=12]
+[ext_resource path="res://PreviewAnimation.gd" type="Script" id=13]
+
+[sub_resource type="StyleBoxFlat" id=1]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0.282353, 0.282353, 0.309804, 1 )
+draw_center = true
+border_width_left = 0
+border_width_top = 0
+border_width_right = 0
+border_width_bottom = 0
+border_color = Color( 0.8, 0.8, 0.8, 1 )
+border_blend = false
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+
+[sub_resource type="DynamicFont" id=2]
+
+size = 12
+outline_size = 0
+outline_color = Color( 0.978875, 0.972839, 0.984375, 1 )
+use_mipmaps = true
+use_filter = true
+extra_spacing_char = 1
+extra_spacing_space = 1
+font_data = ExtResource( 3 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="Theme" id=3]
+
+default_font = SubResource( 2 )
+CheckBox/colors/font_color = Color( 0.823529, 0.823529, 0.823529, 1 )
+CheckBox/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+CheckBox/colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
+CheckBox/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+CheckBox/constants/check_vadjust = 0
+CheckBox/constants/hseparation = 4
+CheckBox/fonts/font = null
+CheckBox/icons/checked = ExtResource( 1 )
+CheckBox/icons/radio_checked = null
+CheckBox/icons/radio_unchecked = null
+CheckBox/icons/unchecked = ExtResource( 2 )
+CheckBox/styles/disabled = null
+CheckBox/styles/focus = null
+CheckBox/styles/hover = null
+CheckBox/styles/normal = null
+CheckBox/styles/pressed = null
+HBoxContainer/constants/separation = 4
+Label/colors/font_color = Color( 0.847059, 0.847059, 0.847059, 1 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+Label/constants/line_spacing = 3
+Label/constants/shadow_as_outline = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/fonts/font = null
+Label/styles/normal = null
+LineEdit/colors/cursor_color = Color( 0.941176, 0.941176, 0.941176, 1 )
+LineEdit/colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+LineEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
+LineEdit/colors/selection_color = Color( 0.490196, 0.490196, 0.490196, 1 )
+LineEdit/constants/minimum_spaces = 12
+LineEdit/fonts/font = null
+LineEdit/styles/focus = null
+LineEdit/styles/normal = SubResource( 1 )
+LineEdit/styles/read_only = null
+PanelContainer/styles/panel = null
+SpinBox/icons/updown = null
+_sections_unfolded = [ "Colors", "Constants", "Fonts", "H Box Container", "Icons", "LineEdit/styles/normal", "Panel Container", "PanelContainer/styles/panel", "Styles", "default_font" ]
+
+[sub_resource type="StyleBoxFlat" id=4]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0.109804, 0.109804, 0.117647, 1 )
+draw_center = true
+border_width_left = 0
+border_width_top = 0
+border_width_right = 0
+border_width_bottom = 0
+border_color = Color( 0.8, 0.8, 0.8, 1 )
+border_blend = false
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 10
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+_sections_unfolded = [ "Border Width", "Corner Radius" ]
+
+[sub_resource type="ViewportTexture" id=5]
+
+resource_local_to_scene = true
+flags = 0
+viewport_path = NodePath("Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/HBoxContainer/Viewport")
+
+[node name="Control" type="Control"]
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = SubResource( 3 )
+script = ExtResource( 4 )
+_sections_unfolded = [ "Pause", "Rect", "Theme", "Visibility", "theme" ]
+
+[node name="Panel" type="PanelContainer" parent="."]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1909.0
+margin_bottom = 933.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="MenuBar" type="PanelContainer" parent="Panel/VBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1902.0
+margin_bottom = 23.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+custom_styles/panel = SubResource( 4 )
+_sections_unfolded = [ "Custom Styles", "Size Flags" ]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/MenuBar"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1902.0
+margin_bottom = 23.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/MenuBar/HBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1847.0
+margin_right = 1902.0
+margin_bottom = 23.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/margin_right = 10
+custom_constants/margin_top = 0
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 0
+_sections_unfolded = [ "Custom Constants" ]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/MenuBar/HBoxContainer/MarginContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 10.0
+margin_right = 45.0
+margin_bottom = 23.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="FPS" type="Label" parent="Panel/VBoxContainer/MenuBar/HBoxContainer/MarginContainer/HBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 3.0
+margin_right = 35.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "0 FPS"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer/MenuBar"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1902.0
+margin_bottom = 23.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="MenuButton" type="MenuButton" parent="Panel/VBoxContainer/MenuBar/HBoxContainer2"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 113.0
+margin_bottom = 23.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = false
+action_mode = 0
+enabled_focus_mode = 0
+shortcut = null
+group = null
+text = "KEY_FILE_MENU"
+flat = true
+align = 1
+items = [ "KEY_FILE_NEW_PROJECT", null, 0, false, false, -1, 0, null, "", false, "", null, 0, false, false, -1, 0, null, "", true, "KEY_FILE_SAVE", null, 0, false, false, -1, 0, null, "", false, "KEY_FILE_LOAD", null, 0, false, false, -1, 0, null, "", false, "KEY_FILE_IMPORT", null, 0, false, false, -1, 0, null, "", false, "", null, 0, false, false, -1, 0, null, "", true, "KEY_FILE_QUIT", null, 0, false, false, 6, 0, null, "", false ]
+_sections_unfolded = [ "Size Flags", "Theme" ]
+
+[node name="LanguageMenu" type="MenuButton" parent="Panel/VBoxContainer/MenuBar/HBoxContainer2"]
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 117.0
+margin_right = 240.0
+margin_bottom = 23.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = false
+action_mode = 0
+enabled_focus_mode = 0
+shortcut = null
+group = null
+text = "KEY_LANG_MENU"
+flat = true
+align = 1
+items = [  ]
+script = ExtResource( 5 )
+_sections_unfolded = [ "Size Flags", "Theme" ]
+
+[node name="Particle_Editor" type="PanelContainer" parent="Panel/VBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 27.0
+margin_right = 1902.0
+margin_bottom = 926.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 6 )
+_sections_unfolded = [ "Custom Styles", "Size Flags" ]
+
+[node name="HBox" type="HBoxContainer" parent="Panel/VBoxContainer/Particle_Editor"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1895.0
+margin_bottom = 892.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 0
+_sections_unfolded = [ "Rect", "Size Flags" ]
+
+[node name="VBoxContainer" type="VSplitContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 856.0
+margin_bottom = 885.0
+rect_min_size = Vector2( 420, 0 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.75
+split_offset = 0
+collapsed = false
+dragger_visibility = 0
+_sections_unfolded = [ "Anchor", "Rect", "Size Flags" ]
+
+[node name="Panel2" type="PanelContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 856.0
+margin_bottom = 141.0
+rect_min_size = Vector2( 0, 64 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_styles/panel = SubResource( 4 )
+_sections_unfolded = [ "Custom Styles", "Size Flags" ]
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel2"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 856.0
+margin_bottom = 141.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+_sections_unfolded = [ "Custom Constants" ]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel2/MarginContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 846.0
+margin_bottom = 131.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 0
+_sections_unfolded = [ "Margin", "Size Flags" ]
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel2/MarginContainer/VBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 836.0
+margin_bottom = 17.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 1
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel2/MarginContainer/VBoxContainer/HBoxContainer2"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 836.0
+margin_bottom = 17.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "KEY_EMITTER_PANEL"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel2/MarginContainer/VBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 21.0
+margin_right = 836.0
+margin_bottom = 121.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="EmitterList" type="ItemList" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel2/MarginContainer/VBoxContainer/HBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 531.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 245, 100 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+items = [  ]
+select_mode = 0
+allow_reselect = false
+icon_mode = 1
+fixed_icon_size = Vector2( 0, 0 )
+_sections_unfolded = [ "Rect", "Size Flags" ]
+
+[node name="EmitterDropdown" type="OptionButton" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel2/MarginContainer/VBoxContainer/HBoxContainer"]
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 491.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 245, 0 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+toggle_mode = false
+action_mode = 0
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 0
+items = [  ]
+selected = -1
+_sections_unfolded = [ "Rect", "Size Flags" ]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel2/MarginContainer/VBoxContainer/HBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 535.0
+margin_right = 836.0
+margin_bottom = 23.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+alignment = 0
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="AddEmitter" type="Button" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel2/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 20.0
+margin_bottom = 23.0
+rect_min_size = Vector2( 20, 20 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "+"
+flat = false
+align = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="RemoveEmitter" type="Button" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel2/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 24.0
+margin_right = 44.0
+margin_bottom = 23.0
+rect_min_size = Vector2( 20, 20 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "-"
+flat = false
+align = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="DuplicateEmitter" type="Button" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel2/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 48.0
+margin_right = 162.0
+margin_bottom = 23.0
+rect_min_size = Vector2( 20, 20 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "KEY_DUPLICATE"
+flat = false
+align = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="Container" type="Container" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel2/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 166.0
+margin_right = 186.0
+margin_bottom = 23.0
+rect_min_size = Vector2( 20, 0 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="PlayAll" type="Button" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel2/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 190.0
+margin_right = 301.0
+margin_bottom = 23.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "KEY_START_ALL"
+flat = false
+align = 1
+
+[node name="Panel" type="PanelContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 153.0
+margin_right = 856.0
+margin_bottom = 885.0
+rect_min_size = Vector2( 161.11, 200 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 4 )
+_sections_unfolded = [ "Custom Styles", "Margin", "Rect", "Size Flags", "Theme", "custom_styles/panel" ]
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 856.0
+margin_bottom = 732.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+_sections_unfolded = [ "Custom Constants" ]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 846.0
+margin_bottom = 722.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 1
+_sections_unfolded = [ "Anchor", "Margin", "Size Flags" ]
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer/VBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 836.0
+margin_bottom = 17.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "KEY_EMITTER_PROPERTIES"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer/VBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 21.0
+margin_right = 836.0
+margin_bottom = 95.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/margin_right = 8
+custom_constants/margin_top = 8
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 8
+_sections_unfolded = [ "Custom Constants" ]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 828.0
+margin_bottom = 66.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 820.0
+margin_bottom = 23.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+_sections_unfolded = [ "Rect" ]
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 3.0
+margin_right = 68.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "KEY_NAME"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="Container" type="Container" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 72.0
+margin_right = 80.0
+margin_bottom = 23.0
+rect_min_size = Vector2( 8, 0 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="EmitterName" type="LineEdit" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 84.0
+margin_right = 284.0
+margin_bottom = 23.0
+rect_min_size = Vector2( 200, 0 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 1
+size_flags_horizontal = 1
+size_flags_vertical = 1
+secret_character = "*"
+focus_mode = 2
+context_menu_enabled = false
+clear_button_enabled = false
+placeholder_alpha = 0.6
+caret_blink = false
+caret_blink_speed = 0.65
+caret_position = 0
+_sections_unfolded = [ "Rect", "Size Flags" ]
+
+[node name="Container2" type="Container" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 288.0
+margin_right = 296.0
+margin_bottom = 23.0
+rect_min_size = Vector2( 8, 0 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="PlaySingle" type="Button" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 300.0
+margin_right = 338.0
+margin_bottom = 23.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Play"
+flat = false
+align = 1
+
+[node name="GridContainer" type="GridContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 27.0
+margin_right = 820.0
+margin_bottom = 58.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 0
+size_flags_vertical = 1
+columns = 4
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 183.0
+margin_bottom = 31.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/margin_right = 4
+custom_constants/margin_top = 0
+custom_constants/margin_left = 4
+custom_constants/margin_bottom = 0
+_sections_unfolded = [ "Custom Constants" ]
+
+[node name="LocalParticles" type="CheckBox" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/GridContainer/MarginContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 4.0
+margin_right = 179.0
+margin_bottom = 31.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 0
+size_flags_vertical = 1
+custom_icons/checked = ExtResource( 1 )
+custom_icons/unchecked = ExtResource( 2 )
+custom_constants/check_vadjust = 5
+custom_constants/hseparation = 5
+toggle_mode = true
+pressed = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "KEY_LOCAL_PARTICLES"
+flat = false
+align = 0
+_sections_unfolded = [ "Custom Constants", "Size Flags", "theme" ]
+
+[node name="MarginContainer2" type="MarginContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 187.0
+margin_right = 288.0
+margin_bottom = 31.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/margin_right = 4
+custom_constants/margin_top = 0
+custom_constants/margin_left = 4
+custom_constants/margin_bottom = 0
+_sections_unfolded = [ "Custom Constants" ]
+
+[node name="LoopEmitter" type="CheckBox" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/GridContainer/MarginContainer2"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 4.0
+margin_right = 97.0
+margin_bottom = 31.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_icons/checked = ExtResource( 1 )
+custom_icons/unchecked = ExtResource( 2 )
+custom_constants/check_vadjust = 5
+custom_constants/hseparation = 5
+toggle_mode = true
+pressed = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "KEY_LOOP"
+flat = false
+align = 0
+_sections_unfolded = [ "Custom Constants", "Custom Icons", "theme" ]
+
+[node name="MarginContainer3" type="MarginContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 292.0
+margin_right = 645.0
+margin_bottom = 31.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/margin_right = 4
+custom_constants/margin_top = 4
+custom_constants/margin_left = 4
+custom_constants/margin_bottom = 4
+_sections_unfolded = [ "Custom Constants" ]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/GridContainer/MarginContainer3"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 349.0
+margin_bottom = 27.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+_sections_unfolded = [ "Rect", "Size Flags" ]
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/GridContainer/MarginContainer3/HBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 3.0
+margin_right = 119.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "KEY_BLEND_MODE"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="BlendOption" type="OptionButton" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/GridContainer/MarginContainer3/HBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 123.0
+margin_right = 345.0
+margin_bottom = 23.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+action_mode = 0
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "KEY_BLEND_MODE_NORMAL"
+flat = false
+align = 0
+items = [ "KEY_BLEND_MODE_NORMAL", null, false, -1, null, "KEY_BLEND_MODE_ADD", null, false, -1, null, "KEY_BLEND_MODE_SUB", null, false, -1, null ]
+selected = 0
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="MarginContainer4" type="MarginContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/GridContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 649.0
+margin_right = 820.0
+margin_bottom = 31.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/margin_right = 4
+custom_constants/margin_top = 0
+custom_constants/margin_left = 4
+custom_constants/margin_bottom = 0
+_sections_unfolded = [ "Custom Constants" ]
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/GridContainer/MarginContainer4"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 4.0
+margin_right = 167.0
+margin_bottom = 31.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+alignment = 0
+_sections_unfolded = [ "Rect" ]
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/GridContainer/MarginContainer4/HBoxContainer2"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 7.0
+margin_right = 69.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "KEY_LAYER"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Container" type="Container" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/GridContainer/MarginContainer4/HBoxContainer2"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 73.0
+margin_right = 83.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 10, 0 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect", "Size Flags" ]
+
+[node name="LayerValue" type="SpinBox" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/GridContainer/MarginContainer4/HBoxContainer2"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 87.0
+margin_right = 163.0
+margin_bottom = 31.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+min_value = 0.0
+max_value = 4095.0
+step = 1.0
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
+allow_greater = false
+allow_lesser = false
+editable = true
+prefix = ""
+suffix = ""
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer/VBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 99.0
+margin_right = 836.0
+margin_bottom = 712.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+scroll_horizontal = 0
+scroll_vertical_enabled = true
+scroll_vertical = 0
+scroll_deadzone = 0
+_sections_unfolded = [ "Scroll", "Size Flags" ]
+
+[node name="PropertyGrid" type="GridContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 836.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+columns = 1
+script = ExtResource( 7 )
+_sections_unfolded = [ "Size Flags", "custom_styles/", "theme" ]
+property_key = null
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 860.0
+margin_right = 1888.0
+margin_bottom = 885.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 0
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1028.0
+margin_bottom = 533.0
+rect_min_size = Vector2( 0, 128 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 7
+size_flags_vertical = 3
+alignment = 1
+_sections_unfolded = [ "Anchor", "Margin", "Rect", "Size Flags", "Theme" ]
+
+[node name="Viewport" type="Viewport" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/HBoxContainer"]
+arvr = false
+size = Vector2( 512, 512 )
+own_world = false
+world = null
+transparent_bg = true
+msaa = 0
+hdr = true
+disable_3d = true
+keep_3d_linear = false
+usage = 0
+debug_draw = 0
+render_target_v_flip = true
+render_target_clear_mode = 0
+render_target_update_mode = 3
+audio_listener_enable_2d = false
+audio_listener_enable_3d = false
+physics_object_picking = false
+gui_disable_input = false
+gui_snap_controls_to_pixels = true
+shadow_atlas_size = 0
+shadow_atlas_quad_0 = 2
+shadow_atlas_quad_1 = 2
+shadow_atlas_quad_2 = 3
+shadow_atlas_quad_3 = 4
+_sections_unfolded = [ "Gui", "Render Target", "Rendering", "world" ]
+
+[node name="Camera2D" type="Camera2D" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/HBoxContainer/Viewport"]
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = false
+drag_margin_v_enabled = false
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+script = ExtResource( 8 )
+_sections_unfolded = [ "Editor", "Transform" ]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/HBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 512.0
+margin_bottom = 533.0
+rect_min_size = Vector2( 128, 128 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 1
+_sections_unfolded = [ "Rect", "Size Flags" ]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/HBoxContainer/VBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 512.0
+margin_bottom = 533.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 1
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/HBoxContainer/VBoxContainer/HBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 512.0
+margin_bottom = 533.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="SourceLabel" type="Label" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 512.0
+margin_bottom = 17.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "KEY_SOURCE_LABEL"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="PrePreview" type="TextureRect" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 21.0
+margin_right = 512.0
+margin_bottom = 533.0
+rect_min_size = Vector2( 512, 512 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = SubResource( 5 )
+stretch_mode = 3
+script = ExtResource( 9 )
+_sections_unfolded = [ "Rect", "Size Flags", "texture" ]
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/HBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 516.0
+margin_right = 1028.0
+margin_bottom = 533.0
+rect_min_size = Vector2( 128, 128 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 1
+_sections_unfolded = [ "Rect", "Size Flags" ]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/HBoxContainer/VBoxContainer2"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 512.0
+margin_bottom = 533.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 1
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/HBoxContainer/VBoxContainer2/HBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 512.0
+margin_bottom = 533.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="OutputLabel" type="Label" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 512.0
+margin_bottom = 17.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "KEY_OUTPUT_LABEL"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="PostPreview" type="TextureRect" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 21.0
+margin_right = 512.0
+margin_bottom = 533.0
+rect_min_size = Vector2( 512, 512 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+stretch_mode = 3
+script = ExtResource( 10 )
+_sections_unfolded = [ "Rect", "Size Flags", "texture" ]
+
+[node name="TabContainer" type="TabContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 537.0
+margin_right = 1028.0
+margin_bottom = 885.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tab_align = 1
+tabs_visible = true
+drag_to_rearrange_enabled = false
+script = ExtResource( 11 )
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Size Flags", "custom_styles/tab_fg" ]
+
+[node name="RenderTab" type="HBoxContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 35.0
+margin_right = -4.0
+margin_bottom = -4.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+script = ExtResource( 12 )
+_sections_unfolded = [ "Size Flags" ]
+title = "KEY_RENDER_TAB"
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 251.0
+margin_right = 768.0
+margin_bottom = 309.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+custom_constants/margin_right = 8
+custom_constants/margin_top = 8
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 8
+_sections_unfolded = [ "Custom Constants", "Size Flags" ]
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 509.0
+margin_bottom = 301.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/panel = SubResource( 4 )
+_sections_unfolded = [ "Custom Styles" ]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 501.0
+margin_bottom = 293.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 233.0
+margin_bottom = 293.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="MarginContainer2" type="MarginContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 233.0
+margin_bottom = 138.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/margin_right = 8
+custom_constants/margin_top = 8
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 8
+_sections_unfolded = [ "Custom Constants" ]
+
+[node name="GridContainer" type="GridContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer2"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 225.0
+margin_bottom = 130.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+columns = 2
+
+[node name="Label6" type="Label" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer2/GridContainer"]
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 90.0
+margin_bottom = 18.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Canvas Width"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="CanvasWidth" type="SpinBox" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer2/GridContainer"]
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 142.0
+margin_right = 218.0
+margin_bottom = 18.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+min_value = 32.0
+max_value = 512.0
+step = 1.0
+page = 0.0
+value = 256.0
+exp_edit = false
+rounded = true
+allow_greater = false
+allow_lesser = false
+editable = true
+prefix = ""
+suffix = ""
+
+[node name="Label7" type="Label" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer2/GridContainer"]
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 90.0
+margin_bottom = 18.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Canvas Width"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="CanvasHeight" type="SpinBox" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer2/GridContainer"]
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 142.0
+margin_right = 218.0
+margin_bottom = 18.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+min_value = 32.0
+max_value = 512.0
+step = 1.0
+page = 0.0
+value = 256.0
+exp_edit = false
+rounded = true
+allow_greater = false
+allow_lesser = false
+editable = true
+prefix = ""
+suffix = ""
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer2/GridContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 137.0
+margin_bottom = 17.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Output Frame Width"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="RenderWidth" type="SpinBox" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer2/GridContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 141.0
+margin_right = 217.0
+margin_bottom = 17.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+min_value = 32.0
+max_value = 512.0
+step = 1.0
+page = 0.0
+value = 256.0
+exp_edit = false
+rounded = true
+allow_greater = false
+allow_lesser = false
+editable = true
+prefix = ""
+suffix = ""
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer2/GridContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 21.0
+margin_right = 137.0
+margin_bottom = 38.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Output Frame Height"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="RenderHeight" type="SpinBox" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer2/GridContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 141.0
+margin_top = 21.0
+margin_right = 217.0
+margin_bottom = 38.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+min_value = 32.0
+max_value = 512.0
+step = 1.0
+page = 0.0
+value = 256.0
+exp_edit = false
+rounded = true
+allow_greater = false
+allow_lesser = false
+editable = true
+prefix = ""
+suffix = ""
+
+[node name="Label4" type="Label" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer2/GridContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 42.0
+margin_right = 137.0
+margin_bottom = 59.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Frames"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="FrameAmount" type="SpinBox" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer2/GridContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 141.0
+margin_top = 42.0
+margin_right = 217.0
+margin_bottom = 59.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+min_value = 10.0
+max_value = 60.0
+step = 1.0
+page = 0.0
+value = 60.0
+exp_edit = false
+rounded = true
+allow_greater = false
+allow_lesser = false
+editable = true
+prefix = ""
+suffix = ""
+
+[node name="Label3" type="Label" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer2/GridContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 63.0
+margin_right = 137.0
+margin_bottom = 80.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Render FPS"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="RenderFPS" type="SpinBox" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer2/GridContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 141.0
+margin_top = 63.0
+margin_right = 217.0
+margin_bottom = 80.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+min_value = 10.0
+max_value = 60.0
+step = 1.0
+page = 0.0
+value = 60.0
+exp_edit = false
+rounded = true
+allow_greater = false
+allow_lesser = false
+editable = true
+prefix = ""
+suffix = ""
+
+[node name="Label5" type="Label" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer2/GridContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 84.0
+margin_right = 137.0
+margin_bottom = 101.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Save Scale"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="RenderScale" type="SpinBox" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer2/GridContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 141.0
+margin_top = 84.0
+margin_right = 217.0
+margin_bottom = 101.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 100.0
+exp_edit = false
+rounded = true
+allow_greater = false
+allow_lesser = false
+editable = true
+prefix = ""
+suffix = "%"
+
+[node name="TextureSizeLabel" type="Label" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer2/GridContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 105.0
+margin_right = 137.0
+margin_bottom = 122.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Texture Size"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 142.0
+margin_right = 233.0
+margin_bottom = 229.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/margin_right = 8
+custom_constants/margin_top = 8
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 8
+_sections_unfolded = [ "Custom Constants" ]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 225.0
+margin_bottom = 79.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 1
+
+[node name="RenderProgress" type="ProgressBar" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 217.0
+margin_bottom = 17.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
+allow_greater = false
+allow_lesser = false
+percent_visible = true
+
+[node name="RenderButton" type="Button" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 21.0
+margin_right = 217.0
+margin_bottom = 44.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Render"
+flat = false
+align = 1
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Size Flags" ]
+
+[node name="SaveButton" type="Button" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 48.0
+margin_right = 217.0
+margin_bottom = 71.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Save"
+flat = false
+align = 1
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Size Flags" ]
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 237.0
+margin_right = 501.0
+margin_bottom = 293.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+use_top_left = false
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/CenterContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 264.0
+margin_bottom = 293.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/margin_right = 8
+custom_constants/margin_top = 8
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 8
+_sections_unfolded = [ "Custom Constants" ]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/CenterContainer/MarginContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 8.0
+margin_right = 256.0
+margin_bottom = 285.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/CenterContainer/MarginContainer/VBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 256.0
+margin_bottom = 17.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Preview (scaled)"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="PreviewAnim" type="TextureRect" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/CenterContainer/MarginContainer/VBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 21.0
+margin_right = 256.0
+margin_bottom = 277.0
+rect_min_size = Vector2( 256, 256 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+stretch_mode = 5
+script = ExtResource( 13 )
+_sections_unfolded = [ "Rect", "Size Flags" ]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab"]
+layer = 5
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="RenderOutputDialog" type="FileDialog" parent="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/CanvasLayer"]
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 560.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 200, 70 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+popup_exclusive = false
+window_title = "Save a File"
+resizable = false
+dialog_hide_on_ok = false
+mode_overrides_title = true
+mode = 4
+access = 2
+filters = PoolStringArray(  )
+show_hidden_files = false
+current_dir = "C:/godot3/2dfx"
+current_file = ""
+current_path = "C:/godot3/2dfx/"
+
+[node name="DialogLayer" type="CanvasLayer" parent="."]
+layer = 5
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="SaveLoadDialog" type="FileDialog" parent="DialogLayer"]
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 512.0
+margin_bottom = 330.0
+rect_min_size = Vector2( 200, 70 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+popup_exclusive = false
+window_title = "Save a File"
+resizable = false
+dialog_hide_on_ok = false
+mode_overrides_title = true
+mode = 4
+access = 2
+filters = PoolStringArray(  )
+show_hidden_files = false
+current_dir = "C:/godot3/2dfx"
+current_file = ""
+current_path = "C:/godot3/2dfx/"
+_sections_unfolded = [ "Popup" ]
+
+[connection signal="lang_updated" from="Panel/VBoxContainer/MenuBar/HBoxContainer2/LanguageMenu" to="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer" method="_on_LanguageMenu_lang_updated"]
+[connection signal="lang_updated" from="Panel/VBoxContainer/MenuBar/HBoxContainer2/LanguageMenu" to="Panel/VBoxContainer/Particle_Editor" method="_on_LanguageMenu_lang_updated"]
+[connection signal="emitter_changed" from="Panel/VBoxContainer/Particle_Editor" to="Panel/VBoxContainer/Particle_Editor" method="_on_Particle_Editor_emitter_changed"]
+[connection signal="emitter_changed" from="Panel/VBoxContainer/Particle_Editor" to="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/PropertyGrid" method="_on_Particle_Editor_emitter_changed"]
+[connection signal="emitter_changed" from="Panel/VBoxContainer/Particle_Editor" to="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/PrePreview" method="_on_Particle_Editor_emitter_changed"]
+[connection signal="item_selected" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel2/MarginContainer/VBoxContainer/HBoxContainer/EmitterList" to="Panel/VBoxContainer/Particle_Editor" method="_on_EmitterDropdown_item_selected"]
+[connection signal="item_selected" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel2/MarginContainer/VBoxContainer/HBoxContainer/EmitterDropdown" to="Panel/VBoxContainer/Particle_Editor" method="_on_EmitterDropdown_item_selected"]
+[connection signal="pressed" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel2/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/AddEmitter" to="Panel/VBoxContainer/Particle_Editor" method="_on_AddEmitter_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel2/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/RemoveEmitter" to="Panel/VBoxContainer/Particle_Editor" method="_on_RemoveEmitter_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel2/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/DuplicateEmitter" to="Panel/VBoxContainer/Particle_Editor" method="_on_DuplicateEmitter_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel2/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/PlayAll" to="Panel/VBoxContainer/Particle_Editor" method="_on_Start_pressed"]
+[connection signal="text_entered" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/EmitterName" to="Panel/VBoxContainer/Particle_Editor" method="_on_EmitterName_text_entered"]
+[connection signal="pressed" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/PlaySingle" to="Panel/VBoxContainer/Particle_Editor" method="_on_PlaySingle_pressed"]
+[connection signal="toggled" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/GridContainer/MarginContainer/LocalParticles" to="Panel/VBoxContainer/Particle_Editor" method="_on_LocalParticles_toggled"]
+[connection signal="toggled" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/GridContainer/MarginContainer2/LoopEmitter" to="Panel/VBoxContainer/Particle_Editor" method="_on_LoopEmitter_toggled"]
+[connection signal="item_selected" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/GridContainer/MarginContainer3/HBoxContainer/BlendOption" to="Panel/VBoxContainer/Particle_Editor" method="_on_BlendOption_item_selected"]
+[connection signal="value_changed" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/GridContainer/MarginContainer4/HBoxContainer2/LayerValue" to="Panel/VBoxContainer/Particle_Editor" method="_on_LayerValue_value_changed"]
+[connection signal="type_changed" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/PropertyGrid" to="Panel/VBoxContainer/Particle_Editor" method="_on_PropertyGrid_type_changed"]
+[connection signal="value_changed" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/PropertyGrid" to="Panel/VBoxContainer/Particle_Editor" method="_on_PropertyGrid_value_changed"]
+[connection signal="vector_type_changed" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/PropertyGrid" to="Panel/VBoxContainer/Particle_Editor" method="_on_PropertyGrid_vector_type_changed"]
+[connection signal="emitter_changed" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/PrePreview" to="Panel/VBoxContainer/Particle_Editor" method="_on_PrePreview_emitter_changed"]
+[connection signal="pan_changed" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/PrePreview" to="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/HBoxContainer/Viewport/Camera2D" method="_on_PrePreview_pan_changed"]
+[connection signal="pan_finished" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/PrePreview" to="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/HBoxContainer/Viewport/Camera2D" method="_on_PrePreview_pan_finished"]
+[connection signal="reset_camera" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/PrePreview" to="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/HBoxContainer/Viewport/Camera2D" method="_on_PrePreview_reset_camera"]
+[connection signal="zoom_changed" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/PrePreview" to="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/HBoxContainer/Viewport/Camera2D" method="_on_PrePreview_zoom_changed"]
+[connection signal="render_fps_updated" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab" to="Panel/VBoxContainer/Particle_Editor" method="_on_RenderTab_render_fps_updated"]
+[connection signal="render_framecount_updated" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab" to="Panel/VBoxContainer/Particle_Editor" method="_on_RenderTab_render_framecount_updated"]
+[connection signal="render_scale_updated" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab" to="Panel/VBoxContainer/Particle_Editor" method="_on_RenderTab_render_scale_updated"]
+[connection signal="render_size_updated" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab" to="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/PrePreview" method="_on_RenderTab_render_size_updated"]
+[connection signal="render_size_updated" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab" to="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer/PostPreview" method="_on_RenderTab_render_size_updated"]
+[connection signal="value_changed" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer2/GridContainer/CanvasWidth" to="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab" method="_on_CanvasWidth_value_changed"]
+[connection signal="value_changed" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer2/GridContainer/RenderWidth" to="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab" method="_on_RenderWidth_value_changed"]
+[connection signal="value_changed" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer2/GridContainer/RenderWidth" to="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/CenterContainer/MarginContainer/VBoxContainer/PreviewAnim" method="_on_RenderHeight_value_changed"]
+[connection signal="value_changed" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer2/GridContainer/RenderHeight" to="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab" method="_on_RenderHeight_value_changed"]
+[connection signal="value_changed" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer2/GridContainer/RenderHeight" to="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/CenterContainer/MarginContainer/VBoxContainer/PreviewAnim" method="_on_RenderHeight_value_changed"]
+[connection signal="value_changed" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer2/GridContainer/FrameAmount" to="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab" method="_on_FrameAmount_value_changed"]
+[connection signal="value_changed" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer2/GridContainer/RenderFPS" to="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab" method="_on_RenderFPS_value_changed"]
+[connection signal="value_changed" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer2/GridContainer/RenderScale" to="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab" method="_on_RenderScale_value_changed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/RenderButton" to="Panel/VBoxContainer/Particle_Editor" method="_on_RenderButton_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/RenderButton" to="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/CenterContainer/MarginContainer/VBoxContainer/PreviewAnim" method="_on_RenderButton_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/MarginContainer/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/SaveButton" to="Panel/VBoxContainer/Particle_Editor" method="_on_SaveButton_pressed"]
+[connection signal="file_selected" from="Panel/VBoxContainer/Particle_Editor/HBox/VBoxContainer2/TabContainer/RenderTab/CanvasLayer/RenderOutputDialog" to="Panel/VBoxContainer/Particle_Editor" method="_on_RenderOutputDialog_file_selected"]
+[connection signal="file_selected" from="DialogLayer/SaveLoadDialog" to="." method="_on_FileDialog_file_selected"]

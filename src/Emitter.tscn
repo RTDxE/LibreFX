@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Emitter_OLD.gd" type="Script" id=1]
+
+
+[sub_resource type="CanvasItemMaterial" id=1]
+
+render_priority = 0
+blend_mode = 0
+light_mode = 0
+
+[node name="Emitter" type="Node2D"]
+material = SubResource( 1 )
+script = ExtResource( 1 )
+_sections_unfolded = [ "Material" ]
+

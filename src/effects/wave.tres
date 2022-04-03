@@ -1,0 +1,30 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+
+code = "shader_type canvas_item;
+uniform float x_amp = 1.0;
+uniform float y_amp = 1.0;
+uniform float x_freq = 0.1;
+uniform float y_freq = 0.1;
+uniform float x_speed = 1.0;
+uniform float y_speed = 1.0;
+void fragment()
+{
+	//COLOR = texture(TEXTURE, UV + vec2(sin(((TIME*x_speed)+ FRAGCOORD.x)* x_freq) * x_amp, cos(((TIME*y_speed)+ FRAGCOORD.y) * y_freq) * y_amp));
+	COLOR = texture(TEXTURE, UV + vec2(sin((TIME * x_speed) + FRAGCOORD.y * x_freq) * x_amp, cos((TIME * y_speed) + FRAGCOORD.x * y_freq) * y_amp));
+}"
+
+[resource]
+
+resource_local_to_scene = true
+render_priority = 0
+shader = SubResource( 1 )
+shader_param/x_amp = 0.1
+shader_param/y_amp = 0.0
+shader_param/x_freq = 0.01
+shader_param/y_freq = 0.0
+shader_param/x_speed = 10.0
+shader_param/y_speed = 0.0
+_sections_unfolded = [ "Resource", "Shader Param", "shader" ]
+

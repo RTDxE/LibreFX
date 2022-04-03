@@ -1,0 +1,31 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+uniform vec2 offset = vec2(0,0);
+uniform int particles_anim_h_frames;
+uniform int particles_anim_v_frames;
+
+void vertex()
+{
+	VERTEX -= offset;
+	float h_frames = float(particles_anim_h_frames);
+	float v_frames = float(particles_anim_v_frames);
+	VERTEX.xy /= vec2(h_frames, v_frames);
+	int total_frames = particles_anim_h_frames * particles_anim_v_frames;
+	int frame = int(float(total_frames) * INSTANCE_CUSTOM.z);
+	float frame_w = 1.0 / h_frames;
+	float frame_h = 1.0 / v_frames;
+	UV.x = UV.x * frame_w + frame_w * float(frame % particles_anim_h_frames);
+	UV.y = UV.y * frame_h + frame_h * float(frame / particles_anim_h_frames);
+}
+
+	"
+
+[resource]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/offset = Vector2( 0, 0 )
+shader_param/particles_anim_h_frames = null
+shader_param/particles_anim_v_frames = null

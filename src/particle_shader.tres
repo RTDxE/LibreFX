@@ -1,0 +1,398 @@
+[gd_resource type="ShaderMaterial" load_steps=19 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type particles;
+uniform bool seamless = false;
+uniform int random_seed = 0;
+uniform int total = 0;
+uniform float lifetime_random = 0;
+uniform float spread = 0;
+uniform float spread_random = 0;
+uniform float spawn_offset = 0;
+uniform float flatness = 0;
+uniform float initial_velocity = 0;
+uniform float emitter_angle = 0;
+uniform float initial_angle = 0;
+uniform float angle_offset = 0;
+uniform float angular_velocity = 0;
+uniform float orbit_velocity = 0;
+uniform float linear_accel = 0;
+uniform float radial_accel = 0;
+uniform float tangent_accel = 0;
+uniform float damping = 0;
+//uniform float scale = 0;
+uniform float hue_variation = 0;
+uniform float anim_speed = 0;
+uniform float anim_offset = 0;
+uniform float initial_velocity_random = 0;
+uniform float initial_angle_random = 0;
+uniform float angular_velocity_random = 0;
+uniform float orbit_velocity_random = 0;
+uniform float linear_accel_random = 0;
+uniform float radial_accel_random = 0;
+uniform float tangent_accel_random = 0;
+uniform float damping_random = 0;
+uniform float scale_random = 0;
+uniform float hue_variation_random = 0;
+uniform float anim_speed_random = 0;
+uniform float anim_offset_random = 0;
+uniform int emission_type = 0;
+uniform float min_radius = 0;
+uniform float max_radius = 0;
+uniform vec3 emission_box_extents = vec3(0);
+uniform vec4 color_value : hint_color = vec4(0);
+uniform vec3 gravity = vec3(0);
+uniform float gravity_invert = 0; //for local co-ords..
+uniform vec2 emitter_pos = vec2(0);
+uniform float flow_map_multiplier = 0;
+//uniform float noise_time;
+uniform sampler2D color_ramp;
+uniform sampler2D hue_variation_texture;
+uniform sampler2D orbit_velocity_texture;
+uniform sampler2D angular_velocity_texture;
+uniform sampler2D linear_accel_texture;
+uniform sampler2D radial_accel_texture;
+uniform sampler2D tangent_accel_texture;
+uniform sampler2D damping_texture;
+uniform sampler2D angle_texture;
+uniform sampler2D scale_texture;
+uniform sampler2D anim_speed_texture;
+uniform sampler2D anim_offset_texture;
+uniform sampler2D flow_map;
+uniform sampler2D scale_x_tex;
+uniform sampler2D scale_y_tex;
+uniform sampler2D emission_texture_points : hint_black;
+//uniform sampler2D noise_tex;
+uniform int emission_texture_point_count = 0;
+uniform bool use_flow_map = false;
+uniform bool align_velocity = false;
+
+float rand_from_seed(inout uint seed) {
+	int k;
+	int s = int(seed);
+	if (s == 0)
+	s = 305420679;
+	k = s / 127773;
+	s = 16807 * (s - k * 127773) - 2836 * k;
+	if (s < 0)
+		s += 2147483647;
+	seed = uint(s);
+	return float(seed % uint(65536))/65535.0;
+}
+
+float rand_from_seed_m1_p1(inout uint seed) {
+	return rand_from_seed(seed)*2.0-1.0;
+}
+
+uint hash(uint x) {
+	x = ((x >> uint(16)) ^ x) * uint(73244475);
+	x = ((x >> uint(16)) ^ x) * uint(73244475);
+	x = (x >> uint(16)) ^ x;
+	return x;
+}
+
+vec3 rand_between(uint seed, vec3 low, vec3 high)
+{
+	return low + rand_from_seed(seed) * (high - low);
+}
+
+vec3 norm(vec3 v)
+ {
+	float invLength = 1.0 / length(v);
+	 
+	v.x *= invLength;
+	v.y *= invLength;
+	v.z *= invLength;
+	 
+	return v;
+}
+
+void vertex() {
+	uint base_number;
+	uint alt_seed;
+	if(seamless){
+		base_number = uint(INDEX+random_seed);
+		alt_seed = hash(base_number);
+	}
+	else
+	{
+		base_number = NUMBER+uint(random_seed);
+		alt_seed = hash(base_number+uint(1));
+	}
+	float angle_rand = rand_from_seed(alt_seed);
+	float scale_rand = rand_from_seed(alt_seed);
+	float hue_rot_rand = rand_from_seed(alt_seed);
+	float anim_offset_rand = rand_from_seed(alt_seed);
+	float pi = 3.14159;
+	float degree_to_rad = pi / 180.0;
+	
+	int point = INDEX;//min(emission_texture_point_count-1,int(rand_from_seed(alt_seed) * float(emission_texture_point_count)));
+	ivec2 emission_tex_size = textureSize( emission_texture_points, 0 );
+	ivec2 emission_tex_ofs = ivec2( point % emission_tex_size.x, point / emission_tex_size.x );
+	
+	if(RESTART){
+		ACTIVE = true;
+		VELOCITY = vec3(0);
+		COLOR *= vec4(1,1,1,0);
+	}
+
+	if(CUSTOM.y > LIFETIME*CUSTOM.a){
+		ACTIVE = false;
+		VELOCITY = vec3(0);
+		COLOR *= vec4(1,1,1,0);
+	}else{
+		ACTIVE = true;
+	}
+
+	if(ACTIVE)
+	{
+		if (RESTART) {
+			CUSTOM.a = mix(1.0, rand_from_seed(alt_seed), lifetime_random);
+			float tex_linear_velocity = 0.0;
+			float tex_angle = textureLod(angle_texture,vec2(0.0,0.0),0.0).r;
+			float tex_anim_offset = textureLod(anim_offset_texture,vec2(0.0,0.0),0.0).r;
+			float spread_rad = spread*degree_to_rad;
+			float angle1_rad = mix(-spread_rad + ((spread_rad)/float(total)*2.0)*(float(INDEX)+0.5), rand_from_seed_m1_p1(alt_seed)*spread_rad, spread_random);
+			vec3 rot = vec3( sin(angle1_rad), cos(angle1_rad),0.0 );
+			VELOCITY = rot*initial_velocity*mix(1.0, rand_from_seed(alt_seed), initial_velocity_random);
+			float base_angle = (initial_angle+tex_angle)*mix(1.0,angle_rand,initial_angle_random);
+			CUSTOM.x = (base_angle+angle_offset)*degree_to_rad;
+			CUSTOM.y = 0.0;
+			CUSTOM.z = (anim_offset)*mix(1.0,anim_offset_rand,anim_offset_random);
+			
+			if(emission_type == 0)
+				TRANSFORM[3].xyz = vec3( sin(angle1_rad), cos(angle1_rad),0.0 ) * spawn_offset;//vec3(0);
+			else if(emission_type == 1)
+			{
+				float ang = (rand_from_seed_m1_p1(alt_seed)*180.0)*degree_to_rad;
+				vec3 unit = vec3(sin(ang), cos(ang), 0.0);
+				TRANSFORM[3].xyz = rand_between(alt_seed, unit * min_radius, unit * max_radius);
+			}
+			else if(emission_type == 2)
+				TRANSFORM[3].xyz = vec3(rand_from_seed(alt_seed) * 2.0 - 1.0, rand_from_seed(alt_seed) * 2.0-1.0, rand_from_seed(alt_seed) * 2.0-1.0)*emission_box_extents;
+			
+			//TRANSFORM[3].xyz = (texelFetch(emission_texture_points, emission_tex_ofs,0).xyz*512.0) - 256.0;
+			
+			VELOCITY = (EMISSION_TRANSFORM * vec4(VELOCITY,0.0)).xyz;
+			TRANSFORM = EMISSION_TRANSFORM * TRANSFORM;
+			VELOCITY.z = 0.0;
+			TRANSFORM[3].z = 0.0;
+		} else {
+			CUSTOM.y += DELTA/(LIFETIME*CUSTOM.a);
+			float tex_linear_velocity = 0.0;
+			float tex_orbit_velocity = textureLod(orbit_velocity_texture,vec2(CUSTOM.y,0.0),0.0).r;
+			float tex_angular_velocity = textureLod(angular_velocity_texture,vec2(CUSTOM.y,0.0),0.0).r;
+			float tex_linear_accel = textureLod(linear_accel_texture,vec2(CUSTOM.y,0.0),0.0).r;
+			float tex_radial_accel = textureLod(radial_accel_texture,vec2(CUSTOM.y,0.0),0.0).r;
+			float tex_tangent_accel = textureLod(tangent_accel_texture,vec2(CUSTOM.y,0.0),0.0).r;
+			float tex_damping =textureLod(damping_texture,vec2(CUSTOM.y,0.0),0.0).r;
+			float tex_angle = textureLod(angle_texture,vec2(CUSTOM.y,0.0),0.0).r;
+			float tex_anim_speed = textureLod(anim_speed_texture,vec2(CUSTOM.y,0.0),0.0).r;
+			//float tex_anim_offset = 0.0;textureLod(anim_offset_texture,vec2(CUSTOM.y,0.0),0.0).r;
+			vec3 force = vec3(0); 
+			vec3 pos = TRANSFORM[3].xyz; 
+			pos.z = 0.0; 
+			//apply linear acceleration
+			force += length(VELOCITY) > 0.0 ? normalize(VELOCITY) * (linear_accel+tex_linear_accel)*mix(1.0,rand_from_seed(alt_seed),linear_accel_random) : vec3(0.0);
+			force += VELOCITY * (linear_accel+tex_linear_accel)*mix(1.0,rand_from_seed(alt_seed),linear_accel_random);
+			//apply radial acceleration
+			vec3 org = EMISSION_TRANSFORM[3].xyz;
+			vec3 diff = pos-org;
+			force += length(diff) > 0.0 ? normalize(diff) * (radial_accel+tex_radial_accel)*mix(1.0,rand_from_seed(alt_seed),radial_accel_random) : vec3(0.0);
+			//apply tangential acceleration;
+			force += length(diff.yx) > 0.0 ? vec3(normalize(diff.yx * vec2(-1.0,1.0)),0.0) * ((tangent_accel+tex_tangent_accel)*mix(1.0,rand_from_seed(alt_seed),tangent_accel_random)) : vec3(0.0);
+			//apply attractor forces
+			VELOCITY += force * DELTA;
+			
+			//flow map
+			if(use_flow_map)
+			{
+				vec2 vel = texture(flow_map, vec2(TRANSFORM[3].x, TRANSFORM[3].y)/512.0+vec2(0.5,0.5)).xy*2.0 - vec2(1);
+				VELOCITY.xy += vel * flow_map_multiplier * DELTA;
+			}
+			
+			//orbit velocity
+			float orbit_amount = (orbit_velocity+tex_orbit_velocity)*mix(1.0,rand_from_seed(alt_seed),orbit_velocity_random);
+			if (orbit_amount!=0.0) {
+			     float ang = orbit_amount * DELTA * pi * 2.0;
+			     mat2 rot = mat2(vec2(cos(ang),-sin(ang)),vec2(sin(ang),cos(ang)));
+			     TRANSFORM[3].xy-=diff.xy;
+			     TRANSFORM[3].xy+=rot * diff.xy;
+			}
+			
+			//noise velocity
+			//float px = texture(noise_tex, vec2(CUSTOM.y,CUSTOM.y + noise_time)).r*2.0-1.0;
+			//float py = texture(noise_tex, vec2(CUSTOM.y,CUSTOM.y + noise_time + 0.5)).r*2.0-1.0;
+			//VELOCITY.xy += vec2(px,py) * 1000.0 * DELTA;
+			
+			if (damping + tex_damping > 0.0) {
+			
+				float v = length(VELOCITY);
+				float damp = (damping+tex_damping)*mix(1.0,rand_from_seed(alt_seed),damping_random);
+				v -= damp * DELTA;
+				if (v < 0.0) {
+					VELOCITY = vec3(0.0);
+				} else {
+					VELOCITY = normalize(VELOCITY) * v;
+				}
+			}
+			VELOCITY += (gravity*gravity_invert) * DELTA;
+			
+			float base_angle = (initial_angle+tex_angle)*mix(1.0,angle_rand,initial_angle_random);
+			base_angle += CUSTOM.y*LIFETIME*(angular_velocity+tex_angular_velocity)*mix(1.0,rand_from_seed(alt_seed)*2.0-1.0,angular_velocity_random);
+			CUSTOM.x = (base_angle+angle_offset)*degree_to_rad;
+			CUSTOM.z = (anim_offset)*mix(1.0,anim_offset_rand,anim_offset_random)+CUSTOM.y*(anim_speed+tex_anim_speed)*mix(1.0,rand_from_seed(alt_seed),anim_speed_random);
+			CUSTOM.z = mod(CUSTOM.z,1.0);
+		}
+		float tex_scale = textureLod(scale_texture,vec2(CUSTOM.y,0.0),0.0).r;
+		
+		float tex_hue_variation = textureLod(hue_variation_texture,vec2(CUSTOM.y,0.0),0.0).r;
+		float hue_rot_angle = (hue_variation+tex_hue_variation)*degree_to_rad*mix(1.0,hue_rot_rand*2.0-1.0,hue_variation_random);
+		float hue_rot_c = cos(hue_rot_angle);
+		float hue_rot_s = sin(hue_rot_angle);
+		mat4 hue_rot_mat = mat4( vec4(0.299,  0.587,  0.114, 0.0),
+				vec4(0.299,  0.587,  0.114, 0.0),
+				vec4(0.299,  0.587,  0.114, 0.0),
+				vec4(0.000,  0.000,  0.000, 1.0)) +
+			mat4( vec4(0.701, -0.587, -0.114, 0.0),
+				vec4(-0.299,  0.413, -0.114, 0.0),
+				vec4(-0.300, -0.588,  0.886, 0.0),
+				vec4(0.000,  0.000,  0.000, 0.0)) * hue_rot_c +
+			mat4( vec4(0.168,  0.330, -0.497, 0.0),
+				vec4(-0.328,  0.035,  0.292, 0.0),
+				vec4(1.250, -1.050, -0.203, 0.0),
+				vec4(0.000,  0.000,  0.000, 0.0)) * hue_rot_s;
+		
+		COLOR = textureLod(color_ramp,vec2(CUSTOM.y,0.0),0.0) * hue_rot_mat;
+		
+		if (align_velocity)
+		{
+			if (length(VELOCITY) > 0.0) {
+				TRANSFORM[1].xyz = normalize(VELOCITY); 
+			} else { 
+				TRANSFORM[1].xyz = normalize(TRANSFORM[1].xyz);
+			}
+			TRANSFORM[0].xyz = normalize(cross(TRANSFORM[1].xyz,TRANSFORM[2].xyz));
+			TRANSFORM[2] = vec4(0.0,0.0,1.0,0.0);
+		}
+		else
+		{
+			TRANSFORM[0] = vec4(cos(CUSTOM.x),-sin(CUSTOM.x),0.0,0.0);
+			TRANSFORM[1] = vec4(sin(CUSTOM.x),cos(CUSTOM.x),0.0,0.0);
+			TRANSFORM[2] = vec4(0.0,0.0,1.0,0.0);
+		}
+		
+		float base_scale_x = mix((tex_scale*textureLod(scale_x_tex,vec2(CUSTOM.y,0.0),0.0).r),0.0,scale_random*scale_rand);
+		float base_scale_y = mix((tex_scale*textureLod(scale_y_tex,vec2(CUSTOM.y,0.0),0.0).r),0.0,scale_random*scale_rand);
+		if (base_scale_x==0.0) base_scale_x=0.000001;
+		if (base_scale_y==0.0) base_scale_y=0.000001;
+		TRANSFORM[0].xyz *= base_scale_x;
+		TRANSFORM[1].xyz *= base_scale_y;
+		TRANSFORM[2].xyz *= 1.0;
+		VELOCITY.z = 0.0;
+		TRANSFORM[3].z = 0.0;
+		//TRANSFORM[3].xyz = texture(emission_texture_points, vec2(CUSTOM.y,0)).rgb*512.0;
+	}
+}
+
+"
+
+[sub_resource type="CurveTexture" id=4]
+
+[sub_resource type="CurveTexture" id=5]
+
+[sub_resource type="CurveTexture" id=6]
+
+[sub_resource type="CurveTexture" id=7]
+
+[sub_resource type="GradientTexture" id=3]
+
+[sub_resource type="CurveTexture" id=8]
+
+[sub_resource type="CurveTexture" id=9]
+
+[sub_resource type="CurveTexture" id=10]
+
+[sub_resource type="Curve" id=11]
+
+[sub_resource type="CurveTexture" id=12]
+curve = SubResource( 11 )
+
+[sub_resource type="CurveTexture" id=13]
+
+[sub_resource type="CurveTexture" id=14]
+
+[sub_resource type="CurveTexture" id=15]
+
+[sub_resource type="CurveTexture" id=16]
+
+[sub_resource type="CurveTexture" id=17]
+
+[sub_resource type="CurveTexture" id=18]
+
+[sub_resource type="CurveTexture" id=19]
+
+[resource]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/seamless = true
+shader_param/random_seed = 1
+shader_param/total = 100
+shader_param/lifetime_random = 1.0
+shader_param/spread = 20.0
+shader_param/spread_random = 1.0
+shader_param/spawn_offset = 0.0
+shader_param/flatness = 0.0
+shader_param/initial_velocity = 100.0
+shader_param/emitter_angle = 0.0
+shader_param/initial_angle = 0.0
+shader_param/angle_offset = 0.0
+shader_param/angular_velocity = 0.0
+shader_param/orbit_velocity = 0.0
+shader_param/linear_accel = 0.0
+shader_param/radial_accel = 0.0
+shader_param/tangent_accel = 0.0
+shader_param/damping = 0.0
+shader_param/hue_variation = 0.0
+shader_param/anim_speed = 0.0
+shader_param/anim_offset = 0.0
+shader_param/initial_velocity_random = 0.0
+shader_param/initial_angle_random = 0.0
+shader_param/angular_velocity_random = 0.0
+shader_param/orbit_velocity_random = 0.0
+shader_param/linear_accel_random = 0.0
+shader_param/radial_accel_random = 0.0
+shader_param/tangent_accel_random = 0.0
+shader_param/damping_random = 0.0
+shader_param/scale_random = 0.0
+shader_param/hue_variation_random = 0.0
+shader_param/anim_speed_random = 0.0
+shader_param/anim_offset_random = 0.0
+shader_param/emission_type = 0
+shader_param/min_radius = 0.0
+shader_param/max_radius = 0.0
+shader_param/emission_box_extents = Vector3( 0, 0, 0 )
+shader_param/color_value = Color( 0, 0, 0, 0 )
+shader_param/gravity = Vector3( 0, 0, 0 )
+shader_param/gravity_invert = 0.0
+shader_param/emitter_pos = Vector2( 0, 0 )
+shader_param/flow_map_multiplier = 0.0
+shader_param/emission_texture_point_count = 0
+shader_param/use_flow_map = false
+shader_param/align_velocity = false
+shader_param/color_ramp = SubResource( 3 )
+shader_param/hue_variation_texture = SubResource( 12 )
+shader_param/orbit_velocity_texture = SubResource( 14 )
+shader_param/angular_velocity_texture = SubResource( 5 )
+shader_param/linear_accel_texture = SubResource( 13 )
+shader_param/radial_accel_texture = SubResource( 15 )
+shader_param/tangent_accel_texture = SubResource( 19 )
+shader_param/damping_texture = SubResource( 8 )
+shader_param/angle_texture = SubResource( 4 )
+shader_param/scale_texture = SubResource( 16 )
+shader_param/anim_speed_texture = SubResource( 7 )
+shader_param/anim_offset_texture = SubResource( 6 )
+shader_param/flow_map = SubResource( 10 )
+shader_param/scale_x_tex = SubResource( 17 )
+shader_param/scale_y_tex = SubResource( 18 )
+shader_param/emission_texture_points = SubResource( 9 )

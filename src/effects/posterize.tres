@@ -1,0 +1,24 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode blend_premul_alpha;
+uniform float gamma = 0.6;
+uniform float color_count = 8.0;
+
+void fragment()
+{
+	vec4 c = texture(TEXTURE, UV);
+	c.rgb = pow(c.rgb, vec3(gamma));
+	c.rgb = c.rgb * color_count;
+	c.rgb = floor(c.rgb);
+	c.rgb = c.rgb / color_count;
+	c.rgb = pow(c.rgb, vec3(1.0/gamma));
+	COLOR = c;
+}"
+
+[resource]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/gamma = 0.6
+shader_param/color_count = 256.0

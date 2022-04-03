@@ -1,0 +1,41 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode blend_premul_alpha;
+uniform float width = 1.0;
+uniform float height = 1.0;
+uniform vec2 tex_size = vec2(256.0, 256.0);
+
+void fragment()
+{	
+
+	vec2 tilesize = 1.0 / tex_size;
+	vec2 tilecount = vec2((1.0 / width) / tilesize.x, (1.0 / height) / tilesize.y);
+	vec2 tile = vec2(1.0 / tilecount.x, 1.0 / tilecount.y);
+	vec2 halftile = tile / 2.0;
+	vec2 tex = floor(UV / tile) * tile + halftile;
+	COLOR = texture(TEXTURE, tex);
+
+	/*
+	float xd = width*(1.0/tex_size.x);
+	float yd = height*(1.0/tex_size.y);
+	vec2 uv = vec2(xd * floor(UV.x / xd), yd * floor(UV.y / yd));
+	COLOR = texture(TEXTURE, uv);	
+	*/
+	/*
+	vec2 uv = UV;
+	uv.x -= mod(uv.x, 1.0 / (tex_size.x-width));
+	uv.y -= mod(uv.y, 1.0 / (tex_size.y-height));
+	
+	COLOR = texture(TEXTURE, uv);
+	*/
+
+}"
+
+[resource]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/width = 2.0
+shader_param/height = 2.0
+shader_param/tex_size = Vector2( 512, 512 )

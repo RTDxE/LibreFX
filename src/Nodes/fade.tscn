@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Nodes/effect_node.tscn" type="PackedScene" id=1]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+
+render_priority = 0
+blend_mode = 4
+light_mode = 0
+
+[sub_resource type="CanvasItemMaterial" id=2]
+
+render_priority = 0
+blend_mode = 2
+light_mode = 0
+
+[node name="Effect" index="0" instance=ExtResource( 1 )]
+title = "Fade"
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+_sections_unfolded = [ "0", "Rect", "Script", "Slot", "slot", "slot/0" ]
+
+[node name="Viewport" parent="." index="0"]
+render_target_clear_mode = 1
+
+[node name="TextureRect" parent="Viewport" index="0"]
+material = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="Viewport" index="1"]
+modulate = Color( 0, 0, 0, 0.14902 )
+material = SubResource( 2 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 512.0
+margin_bottom = 512.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 1, 1, 1, 1 )
+_sections_unfolded = [ "Material", "Rect", "Visibility" ]
+
+[node name="Container" type="Container" parent="." index="1"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 16.0
+margin_top = 24.0
+margin_right = 80.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 10, 10 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+

@@ -1,0 +1,344 @@
+keys,en,fr,de,it,es,pt
+TIP_LOAD_GRADIENT,List custom gradients and presets,,,,,
+TIP_SAVE_GRADIENT,Save the current gradient,,,,,
+PROP_DURATION,Duration,Durée,Dauer,Durata,Duración,Duração
+PROP_AMOUNT,Amount,Montant,Menge,Quantità,Cantidad,Montante
+PROP_GRAVITY,Gravity,La gravité,Schwere,Gravità,Gravedad,Gravidade
+PROP_SPREAD,Spread,Propager,Verbreitung,Diffusione,Untado,Espalhar
+PROP_MOTION_TYPE,Motion Type,Type de mouvement,Bewegungsart,Tipo di movimento,Tipo de movimiento,Tipo de movimento
+PROP_SIN_FREQ,Sin Frequency,Fréquence de péché,Sin-Frequenz,Sin frequenza,Sin Frecuencia,Freqüência do Pecado
+PROP_COS_FREQ,Cos Frequency,Fréquence Cos,Cos Frequenz,Frequenza Cos,Frecuencia Cos,Cos Frequency
+PROP_SIN_AMP,Sin Amplitude,Sin Amplitude,Sünde Amplitude,Sin Ampiezza,Sin amplitud,Amplitude do Pecado
+PROP_COS_AMP,Cos Amplitude,Cos Amplitude,Cos Amplitude,Cos ampiezza,Cos Amplitude,Cos Amplitude
+PROP_PARTICLE_TEX,Particle Texture,Texture de particules,Partikel-Textur,Trama di particelle,Textura de partícula,Textura de partícula
+PROP_POSITION,Position,Position,Position,Posizione,Posición,Posição
+TIP_POSITION,The position of the emitter relative to the center of the canvas,La position de l'émetteur par rapport au centre de la toile,Die Position des Emitters relativ zur Mitte der Leinwand,La posizione dell'emettitore rispetto al centro della tela,La posición del emisor con relación al centro del lienzo,A posição do emissor em relação ao centro da tela
+PROP_RAND_SEED,Random Seed,Graine Aléatoire,Zufallssamen,Seme casuale,Semilla aleatoria,Semente Aleatória
+TIP_RAND_SEED,Random seed when using the Seamless Loop option,Graine aléatoire lors de l'utilisation de l'option Boucle sans couture,Random Seed bei Verwendung der Seamless Loop-Option,Sementi casuali quando si utilizza l'opzione Seamless Loop,Semilla aleatoria cuando se usa la opción Seamless Loop,Semente aleatória ao usar a opção Seamless Loop
+TIP_DURATION,"The lifetime of the emitter in seconds. If repeat is disabled, the emitter will stop when this time is reached","La durée de vie de l'émetteur en secondes. Si la répétition est désactivée, l'émetteur s'arrêtera lorsque ce temps sera atteint","Die Lebensdauer des Senders in Sekunden. Wenn die Wiederholung deaktiviert ist, stoppt der Sender, wenn diese Zeit erreicht ist","La vita dell'emettitore in pochi secondi. Se repeat è disabilitato, l'emettitore si arresterà al raggiungimento di questo tempo","La vida útil del emisor en segundos. Si la repetición está desactivada, el emisor se detendrá cuando se alcance este tiempo","A vida do emissor em segundos. Se a repetição estiver desativada, o emissor parará quando esse tempo for atingido"
+PROP_TIME_SCALE,Timescale,Échelle de temps,Zeitstrahl,Orizzonte temporale,Escala de tiempo,Escala de tempo
+TIP_SPEED_SCALE,"The time scale of the emitter.
+1.0 is normal speed.
+Lower values will result in a slower simulation, higher values will result in a faster simulation","L'échelle de temps de l'émetteur.
+1,0 est la vitesse normale.
+Des valeurs plus faibles entraîneront une simulation plus lente, des valeurs plus élevées entraîneront une simulation plus rapide ","Die Zeitskala des Senders.
+1.0 ist normale Geschwindigkeit.
+Niedrigere Werte führen zu einer langsameren Simulation, höhere Werte führen zu einer schnelleren Simulation ","La scala temporale dell'emettitore.
+1.0 è la velocità normale.
+Valori più bassi si traducono in una simulazione più lenta, valori più alti risulteranno in una simulazione più veloce ","La escala de tiempo del emisor.
+1.0 es la velocidad normal.
+Los valores más bajos darán como resultado una simulación más lenta, valores más altos darán como resultado una simulación más rápida .","A escala de tempo do emissor.
+1,0 é a velocidade normal.
+Valores mais baixos resultarão em uma simulação mais lenta, valores mais altos resultarão em uma simulação mais rápida "
+TIP_AMOUNT,"Amount of particles to create.
+Creation of particles is spread out over time according to particle lifetime so that 
+there is always a consistent flow to maintain the amount","Quantité de particules à créer.
+La création de particules est étalée dans le temps en fonction de la durée de vie des particules, de sorte que 
+il y a toujours un flux constant pour maintenir le montant ","Anzahl der zu erstellenden Partikel.
+Die Erzeugung von Partikeln verteilt sich im Laufe der Zeit entsprechend der Lebensdauer der Partikel 
+es gibt immer einen gleichmäßigen Fluss, um die Menge zu erhalten ","Quantità di particelle da creare.
+La creazione di particelle è distribuita nel tempo in base alla durata della particella in modo tale 
+c'è sempre un flusso consistente per mantenere l'importo ","Cantidad de partículas para crear.
+La creación de partículas se extiende a lo largo del tiempo de acuerdo con la vida útil de la partícula para que 
+siempre hay un flujo constante para mantener la cantidad ","Quantidade de partículas para criar.
+A criação de partículas é distribuída ao longo do tempo de acordo com a vida útil das partículas, de modo que 
+há sempre um fluxo consistente para manter a quantidade "
+PROP_PREPROCESS,Preprocess,Pré-traitement,Vorverarbeitung,preprocess,Preproceso,Pré-processar
+TIP_PREPROCESS,The emitter will start as if it had already been running for this many seconds,L'émetteur démarrera comme s'il avait déjà fonctionné pendant plusieurs secondes,"Der Sender wird starten, als wäre er bereits seit vielen Sekunden in Betrieb",L'emettitore verrà avviato come se fosse già in esecuzione per molti secondi,El emisor comenzará como si ya hubiera estado funcionando durante tantos segundos,O emissor começará como se já estivesse funcionando por tantos segundos
+PROP_DELAY,Delay,Retard,Verzögern,Ritardo,Retrasar,Demora
+TIP_DELAY,"The delay in seconds before the emitter will start.
+Only used when repeat is disabled","Le délai en secondes avant que l'émetteur ne démarre.
+Utilisé uniquement lorsque la répétition est désactivée ","Die Verzögerung in Sekunden, bevor der Sender startet.
+Wird nur verwendet, wenn die Wiederholung deaktiviert ist. ","Il ritardo in secondi prima dell'inizio dell'emettitore.
+Usato solo quando la ripetizione è disabilitata ","La demora en segundos antes de que comience el emisor.
+Solo se usa cuando la repetición está deshabilitada ","O atraso em segundos antes do emissor começar.
+Utilizado apenas quando a repetição está desativada "
+PROP_LIFETIME,Lifetime,Durée de vie,Lebenszeit,Tutta la vita,Toda la vida,Tempo de vida
+TIP_LIFETIME,Lifetime of each particle in seconds,Durée de vie de chaque particule en secondes,Lebensdauer jedes Partikels in Sekunden,Durata di ogni particella in secondi,Vida útil de cada partícula en segundos,Tempo de vida de cada partícula em segundos
+PROP_LIFE_RANDOM,Lifetime Rand,Rand à vie,Lebenslanger Rand,Rand a vita,Lifetime Rand,Rand da vida
+TIP_LIFETIME_RANDOM,Randomness of each particle's lifetime,Caractère aléatoire de la durée de vie de chaque particule,Zufälligkeit der Lebensdauer jedes Partikels,Casualità della vita di ogni particella,Aleatoriedad de la vida útil de cada partícula,Aleatoriedade do tempo de vida de cada partícula
+PROP_EXPLOSIVENESS,Burst,Éclater,Platzen,scoppiare,Ráfaga,Estourar
+TIP_EXPLOSIVENESS,"How quickly the total amount of particles are created.
+0 = particles created evenly over time
+1 = all particles created instantly","Avec quelle rapidité la quantité totale de particules est créée.
+0 = particules créées uniformément dans le temps
+1 = toutes les particules créées instantanément ","Wie schnell wird die Gesamtmenge an Partikeln erzeugt?
+0 = Partikel, die gleichmäßig über die Zeit erzeugt werden
+1 = alle Partikel sofort erstellt ","Quanto velocemente viene creata la quantità totale di particelle.
+0 = particelle create uniformemente nel tempo
+1 = tutte le particelle create istantaneamente ","Qué tan rápido se crea la cantidad total de partículas.
+0 = partículas creadas de manera uniforme en el tiempo
+1 = todas las partículas creadas al instante ","Com que rapidez a quantidade total de partículas é criada.
+0 = partículas criadas uniformemente ao longo do tempo
+1 = todas as partículas criadas instantaneamente "
+TIP_GRAVITY,A constant force applied to each particle. Not affected by damping,Une force constante appliquée à chaque particule. Non affecté par l'amortissement,"Eine konstante Kraft, die auf jedes Partikel angewendet wird. Nicht durch Dämpfung beeinflusst",Una forza costante applicata a ciascuna particella. Non influenzato dallo smorzamento,Una fuerza constante aplicada a cada partícula. No se ve afectado por la amortiguación,Uma força constante aplicada a cada partícula. Não afetado pelo amortecimento
+PROP_EMITTER_ANGLE,Angle,Angle,Winkel,Angolo,Ángulo,Ângulo
+TIP_EMITTER_ANGLE,Direction the particles will move when their velocity is greater than 0,Direction les particules se déplaceront lorsque leur vitesse est supérieure à 0,"Richtung bewegen sich die Partikel, wenn ihre Geschwindigkeit größer als 0 ist",Direzione le particelle si sposteranno quando la loro velocità è maggiore di 0,Dirección en que las partículas se moverán cuando su velocidad sea mayor que 0,Direção as partículas se moverão quando sua velocidade for maior que 0
+TIP_SPREAD,"A random angle range a particle will travel in, based around the emitter direction","Une plage d'angle aléatoire dans laquelle une particule se déplace, basée sur la direction de l'émetteur","Ein zufälliger Winkelbereich, in dem sich ein Partikel befindet, basierend auf der Emitterrichtung","Un intervallo di angoli casuale in cui una particella viaggerà, in base alla direzione dell'emettitore","Un rango de ángulo aleatorio en el que se desplazará una partícula, en función de la dirección del emisor","Um intervalo de ângulo aleatório em que uma partícula vai viajar, com base em torno da direção do emissor"
+PROP_SPAWN_OFFSET,Radial spawn offset,Offset radiale,Radialer Spawn-Offset,Offset di spawn radiale,Desplazamiento de spawn radial,Offset radial do spawn
+TIP_SPAWN_OFFSET,Radial distance from the emitter where particles will be spawned,Distance radiale de l'émetteur où les particules seront générées,"Radialer Abstand vom Emitter, wo Partikel erzeugt werden",Distanza radiale dall'emettitore in cui verranno generate le particelle,Distancia radial desde el emisor donde se generarán partículas,Distância radial do emissor onde as partículas serão geradas
+PROP_SPREAD_RANDOM,Spread Rand,Spread Rand,Spread Rand,Spread Rand,Spread Rand,Spread Rand
+TIP_SPREAD_RANDOM,"Randomness of each particle's angle that it will travel in, within the spread value
+0 = No randomness. The angular direction will increase for each particle (within the spread value), until the last particle, then it will start back at 0
+1 = Full randomness. The angular direction will be chosen at random from within the spread value","Aléatoire de l'angle de chaque particule dans lequel il se déplacera, à l'intérieur de la valeur de propagation
+0 = pas de caractère aléatoire La direction angulaire augmentera pour chaque particule (à l'intérieur de la valeur d'étalement), jusqu'à ce que la dernière particule, puis elle recommencera à 0
+1 = Aléatoire complet. La direction angulaire sera choisie au hasard dans la valeur de propagation ","Zufälligkeit des Winkels jedes Teilchens, in dem es sich bewegen wird, innerhalb des Streuwertes
+0 = Keine Zufälligkeit. Die Winkelrichtung wird für jedes Partikel (innerhalb des Spread-Werts) bis zum letzten Partikel erhöht und beginnt dann bei 0
+1 = Volle Zufälligkeit. Die Winkelrichtung wird zufällig aus dem Spread-Wert ausgewählt.
+
+
+
+","Casuale dell'angolo di ogni particella in cui viaggerà, all'interno del valore di diffusione
+0 = Nessuna casualità. La direzione angolare aumenterà per ogni particella (entro il valore di spread), fino all'ultima particella, quindi inizierà a 0
+1 = Completa casualità. La direzione angolare sarà scelta a caso all'interno del valore di spread ","Aleatoriedad del ángulo de cada partícula en el que viajará, dentro del valor de propagación
+0 = Sin aleatoriedad. La dirección angular aumentará para cada partícula (dentro del valor de dispersión), hasta la última partícula, luego comenzará de nuevo en 0
+1 = aleatoriedad completa. La dirección angular se elegirá al azar dentro del valor de propagación ","Aleatoriedade do ângulo de cada partícula em que ela viajará, dentro do valor do spread
+0 = sem aleatoriedade. A direção angular aumentará para cada partícula (dentro do valor do spread), até a última partícula, então ela começará novamente em 0
+1 = aleatoriedade total. A direção angular será escolhida aleatoriamente dentro do valor do spread "
+PROP_INIT_VELOCITY,Initial Velocity,Vitesse initiale,Anfangsgeschwindigkeit,Velocità iniziale,Velocidad inicial,Velocidade inicial
+TIP_INIT_VELOCITY,The initial velocity of each particle,La vitesse initiale de chaque particule,Die Anfangsgeschwindigkeit jedes Teilchens,La velocità iniziale di ogni particella,La velocidad inicial de cada partícula,A velocidade inicial de cada partícula
+PROP_INIT_VELOCITY_RANDOM,Initial Velocity Rand,Vitesse initiale Rand,Anfangsgeschwindigkeit Rand,Iniziale Velocity Rand,Velocity Rand inicial,Rand de velocidade inicial
+PROP_LINEAR_ACCEL,Linear Acceleration,Accélération linéaire,Lineare Beschleunigung,Accelerazione lineare,Aceleración lineal,Aceleração Linear
+TIP_LINEAR_ACCEL,The acceleration of each particle over time,L'accélération de chaque particule au fil du temps,Die Beschleunigung jedes Teilchens im Laufe der Zeit,L'accelerazione di ogni particella nel tempo,La aceleración de cada partícula en el tiempo,A aceleração de cada partícula ao longo do tempo
+PROP_LINEAR_ACCEL_RANDOM,Linear Acceleration Rand,Rand d'accélération linéaire,Lineare Beschleunigung Rand,Rand Accelerazione lineare,Lineal Aceleración Rand,Rand de aceleração linear
+TIP_LINEAR_ACCEL_RANDOM,Randomness of each particle's linear acceleration,Caractère aléatoire de l'accélération linéaire de chaque particule,Zufall der linearen Beschleunigung jedes Teilchens,Casualità dell'accelerazione lineare di ogni particella,Aleatoriedad de la aceleración lineal de cada partícula,Aleatoriedade da aceleração linear de cada partícula
+PROP_ORBITAL_CURVE,Orbital Velocity,Vitesse Orbitale,Orbitalgeschwindigkeit,Velocità orbitale,Velocidad orbital,Velocidade Orbital
+TIP_ORBITAL_CURVE,"The orbital velocity of each particle over time.
+Causes the particles to swirl around the emitter","La vitesse orbitale de chaque particule au fil du temps.
+Fait tourner les particules autour de l'émetteur ","Die Umlaufgeschwindigkeit jedes Teilchens über die Zeit.
+Verursacht, dass die Partikel um den Emitter wirbeln "",La velocità orbitale di ogni particella nel tempo.",,,
+"Fa ruotare le particelle attorno all'emettitore ""","La velocidad orbital de cada partícula en el tiempo.
+Hace que las partículas giren alrededor del emisor ","A velocidade orbital de cada partícula ao longo do tempo.
+Faz com que as partículas girem em torno do emissor ",,,,
+PROP_ORBIT_VELOCITY_RANDOM,Orbital Velocity Rand,Vitesse Orbitale Rand,Orbitale Geschwindigkeit Rand,Orbital Velocity Rand,Velocidad orbital Rand,Rand de velocidade orbital
+TIP_ORBIT_VELOCITY_RANDOM,Randomness of each particle's orbital velocity,Caractère aléatoire de la vitesse orbitale de chaque particule,Zufälligkeit der Umlaufgeschwindigkeit jedes Teilchens,Casualità della velocità orbitale di ogni particella,Aleatoriedad de la velocidad orbital de cada partícula,Aleatoriedade da velocidade orbital de cada partícula
+PROP_RADIAL_CURVE,Radial Acceleration,Accélération radiale,Radialbeschleunigung,Accelerazione radiale,Aceleración radial,Aceleração Radial
+TIP_RADIAL_CURVE,"The radial acceleration of each particle.
+When positive, particles move away from the center. When negative, they move towards it","L'accélération radiale de chaque particule.
+Lorsque positif, les particules s'éloignent du centre. Quand négatif, ils se dirigent vers lui ","Die radiale Beschleunigung jedes Teilchens.
+Wenn positiv, bewegen sich Partikel vom Zentrum weg. Wenn sie negativ sind, bewegen sie sich darauf zu ","L'accelerazione radiale di ogni particella.
+Quando sono positive, le particelle si allontanano dal centro. Quando sono negativi, si muovono verso di esso ","La aceleración radial de cada partícula.
+Cuando es positivo, las partículas se alejan del centro. Cuando es negativo, se mueven hacia él ","A aceleração radial de cada partícula.
+Quando positivo, as partículas se afastam do centro. Quando negativo, eles se movem em direção a ele "
+PROP_RADIAL_RANDOM,Radial Acceleration Rand,Rand d'accélération radiale,Radialbeschleunigung Rand,Rand Radial Acceleration,Rand de aceleración radial,Rand de aceleração radial
+TIP_RADIAL_RANDOM,Randomness of each particle's radial acceleration,Aléatoire de l'accélération radiale de chaque particule,Zufälligkeit der radialen Beschleunigung jedes Teilchens,Casualità dell'accelerazione radiale di ogni particella,Aleatoriedad de la aceleración radial de cada partícula,Aleatoriedade da aceleração radial de cada partícula
+PROP_TANGENT_CURVE,Tangent Acceleration,Accélération tangente,Tangente Beschleunigung,Accelerazione tangente,Aceleración de la tangente,Aceleração Tangente
+TIP_TANGENT_CURVE,"The tangential acceleration of each particle.
+Uses the tangent vector to the center as the basis of the acceleration","L'accélération tangentielle de chaque particule.
+Utilise le vecteur tangent au centre comme base de l'accélération ","Die tangentiale Beschleunigung jedes Teilchens.
+Verwendet den Tangentenvektor zur Mitte als Grundlage der Beschleunigung ","L'accelerazione tangenziale di ogni particella.
+Usa il vettore tangente al centro come base dell'accelerazione ","La aceleración tangencial de cada partícula.
+Utiliza el vector tangente al centro como base de la aceleración ","A aceleração tangencial de cada partícula.
+Usa o vetor tangente para o centro como base da aceleração "
+PROP_TANGENT_RANDOM,Tangent Acceleration Rand,Randonnée tangente,Tangente Beschleunigungsrand,Rand di accelerazione tangente,Tangent Acceleration Rand,Rand de Aceleração Tangente
+TIP_TANGENT_RANDOM,Randomness of each particle's tangential acceleration,Caractère aléatoire de l'accélération tangentielle de chaque particule,Zufälligkeit der tangentialen Beschleunigung jedes Teilchens,Casualità dell'accelerazione tangenziale di ogni particella,Aleatoriedad de la aceleración tangencial de cada partícula,Aleatoriedade da aceleração tangencial de cada partícula
+PROP_DAMPING_CURVE,Damping Curve,Courbe d'amortissement,Dämpfungskurve,Damping Curve,Curva de amortiguación,Curva de amortecimento
+TIP_DAMPING_CURVE,"Damping applied to each particle over it's lifetime. This will slow a particle down, but it does not affect gravity","Amortissement appliqué à chaque particule pendant sa durée de vie. Cela ralentira une particule, mais n'affecte pas la gravité","Dämpfung für jedes Partikel während seiner Lebensdauer. Dies wird ein Teilchen verlangsamen, aber es beeinflusst die Schwerkraft nicht","Smorzamento applicato a ciascuna particella nel corso della sua vita. Questo rallenterà una particella verso il basso, ma non influirà sulla gravità","Amortiguación aplicada a cada partícula durante su vida útil. Esto reducirá la velocidad de una partícula, pero no afecta la gravedad","Amortecimento aplicado a cada partícula durante sua vida útil. Isso diminuirá a partícula, mas não afeta a gravidade"
+PROP_DAMPING_RANDOM,Damping Rand,Amortissement Rand,Dämpfender Rand,Rand smorzante,Damping Rand,Amortecimento do Rand
+TIP_DAMPING_RANDOM,Randomness of the damping,Aléatoire de l'amortissement,Zufälligkeit der Dämpfung,Casualità dello smorzamento,Aleatoriedad de la amortiguación,Aleatoriedade do amortecimento
+PROP_USE_FLOW_MAP,Use Flow Map,Utiliser la carte de flux,Verwenden Sie die Flusskarte,Usa la mappa del flusso,Usar mapa de flujo,Use o mapa de fluxo
+TIP_USE_FLOW_MAP,Enable or disable the use of a flow map,Activer ou désactiver l'utilisation d'une carte de flux,Aktivieren oder deaktivieren Sie die Verwendung einer Flow-Map,Abilita o disabilita l'uso di una mappa di flusso,Habilitar o deshabilitar el uso de un mapa de flujo,Ativar ou desativar o uso de um mapa de fluxo
+PROP_FLOW_MAP_TEX,Texture,Texture,Textur,Struttura,Textura,Textura
+TIP_FLOW_MAP_TEX,"The flow map texture to use.
+This texture will push particles around based on the colour values in the red and green channels of the texture.
+The particles look up the colour of the texture based on their current position.","La texture de la carte de flux à utiliser.
+Cette texture poussera les particules en fonction des valeurs de couleur dans les canaux rouge et vert de la texture.
+Les particules recherchent la couleur de la texture en fonction de leur position actuelle. ","Die zu verwendende Flusskartenstruktur.
+Diese Textur verschiebt Partikel basierend auf den Farbwerten in den roten und grünen Kanälen der Textur.
+Die Partikel sehen anhand ihrer aktuellen Position die Farbe der Textur nach. ","La texture della mappa del flusso da usare.
+Questa texture spinge le particelle attorno in base ai valori di colore nei canali rosso e verde della trama.
+Le particelle cercano il colore della trama in base alla loro posizione attuale. ","La textura del mapa de flujo a usar.
+Esta textura empujará partículas en función de los valores de color en los canales rojo y verde de la textura.
+Las partículas buscan el color de la textura en función de su posición actual .","A textura do mapa de fluxo a ser usada.
+Essa textura empurrará as partículas com base nos valores das cores nos canais vermelho e verde da textura.
+As partículas procuram a cor da textura com base em sua posição atual ."
+PROP_FLOW_MAP_MULTIPLIER,Strength,Force,Stärke,Forza,Fuerza,Força
+TIP_FLOW_MAP_MULTIPLIER,The strength of the force applied by the flow map to the particle's velocity,La force de la force appliquée par la carte de flux à la vitesse de la particule,"Die Stärke der Kraft, die von der Strömungskarte auf die Geschwindigkeit des Teilchens ausgeübt wird",La forza della forza applicata dalla mappa del flusso alla velocità della particella,La fuerza de la fuerza aplicada por el mapa de flujo a la velocidad de la partícula,A força da força aplicada pelo mapa de fluxo à velocidade da partícula
+KEY_NONE,None,Aucun,Keiner,Nessuna,Ninguna,Nenhum
+KEY_SIN_COS,Sin & Cos,Sin & Cos,Sünde & Cos,Sin & Cos,Sin y Cos,Pecado e Cos
+TIP_MOTION_TYPE,Available options for moving the emitter,Options disponibles pour déplacer l'émetteur,Verfügbare Optionen zum Bewegen des Senders,Opzioni disponibili per spostare l'emettitore,Opciones disponibles para mover el emisor,Opções disponíveis para mover o emissor
+TIP_SIN_FREQ,The frequency of the horizontal movement,La fréquence du mouvement horizontal,Die Häufigkeit der horizontalen Bewegung,La frequenza del movimento orizzontale,La frecuencia del movimiento horizontal,A frequência do movimento horizontal
+TIP_COS_FREQ,The frequency of the vertical movement,La fréquence du mouvement vertical,Die Häufigkeit der vertikalen Bewegung,La frequenza del movimento verticale,La frecuencia del movimiento vertical,A frequência do movimento vertical
+PROP_SIN_FREQ_OFFSET,Sin Offset,Décalage du péché,Sin Offset,Sin Offset,Sin compensación,Sin deslocamento
+TIP_SIN_FREQ_OFFSET,The frequency offset of the horizontal movement,Le décalage de fréquence du mouvement horizontal,Der Frequenzversatz der horizontalen Bewegung,L'offset di frequenza del movimento orizzontale,El desplazamiento de frecuencia del movimiento horizontal,O deslocamento de freqüência do movimento horizontal
+PROP_COS_FREQ_OFFSET,Cos Offset,Décalage Cos,Cos Offset,Offset di Cos,Cos Offset,Cos Offset
+TIP_COS_FREQ_OFFSET,The frequency offset of the vertical movement,Le décalage de fréquence du mouvement vertical,Der Frequenzversatz der vertikalen Bewegung,L'offset di frequenza del movimento verticale,El desplazamiento de frecuencia del movimiento vertical,O deslocamento de freqüência do movimento vertical
+TIP_SIN_AMP,The amplitude of the horizontal movement,L'amplitude du mouvement horizontal,Die Amplitude der horizontalen Bewegung,L'ampiezza del movimento orizzontale,La amplitud del movimiento horizontal,A amplitude do movimento horizontal
+TIP_COS_AMP,The amplitude of the vertical movement,L'amplitude du mouvement vertical,Die Amplitude der vertikalen Bewegung,L'ampiezza del movimento verticale,La amplitud del movimiento vertical,A amplitude do movimento vertical
+SHAPE_POINT,Point,Point,Punkt,Punto,Punto,Ponto
+SHAPE_CIRCLE,Circle,Cercle,Kreis,Cerchio,Circulo,Círculo
+SHAPE_BOX,Box,Boîte,Box,Scatola,Caja,Caixa
+PROP_EMITTER_SHAPE,Emitter Shape,Forme d'émetteur,Emitterform,Forma dell'emettitore,Forma del emisor,Forma do emissor
+TIP_EMITTER_SHAPE,The shape of the area where particles are created,La forme de la zone où les particules sont créées,"Die Form des Bereichs, in dem Partikel erzeugt werden",La forma dell'area in cui vengono create le particelle,La forma del área donde se crean las partículas,A forma da área onde as partículas são criadas
+PROP_EMITTER_WIDTH,Width,Largeur,Breite,Larghezza,Anchura,Largura
+TIP_EMITTER_WIDTH,The width of the particle creation area,La largeur de la zone de création de particules,Die Breite des Partikelerstellungsbereichs,La larghezza dell'area di creazione delle particelle,El ancho del área de creación de partículas,A largura da área de criação de partículas
+PROP_EMITTER_HEIGHT,Height,la taille,Höhe,Altezza,Altura,Altura
+TIP_EMITTER_HEIGHT,The height of the particle creation area,La hauteur de la zone de création de particules,Die Höhe des Partikelerstellungsbereichs,L'altezza dell'area di creazione delle particelle,La altura del área de creación de partículas,A altura da área de criação de partículas
+PROP_EMITTER_MIN_RADIUS,Min Radius,Rayon minimum,Min. Radius,Raggio minimo,Min Radio,Raio Mínimo
+TIP_EMITTER_MIN_RADIUS,The inner radius of the particle creation area,Le rayon intérieur de la zone de création de particules,Der innere Radius des Partikelerstellungsbereichs,Il raggio interno dell'area di creazione delle particelle,El radio interno del área de creación de partículas,O raio interno da área de criação de partículas
+PROP_EMITTER_MAX_RADIUS,Max Radius,Max Radius,Max Radius,Raggio massimo,Max Radius,Max Radius
+TIP_EMITTER_MAX_RADIUS,The outer radius of the particle creation area,Le rayon externe de la zone de création de particules,Der äußere Radius des Partikelerstellungsbereichs,Il raggio esterno dell'area di creazione delle particelle,El radio exterior del área de creación de partículas,O raio externo da área de criação de partículas
+TIP_PARTICLE_TEX,The image to use for each particle,L'image à utiliser pour chaque particule,"Das Bild, das für jedes Partikel verwendet werden soll",L'immagine da usare per ogni particella,La imagen a usar para cada partícula,A imagem a ser usada para cada partícula
+PROP_PARTICLE_TILES,Sheet Columns & Rows,Colonnes et rangées de feuilles,Blatt Spalten und Zeilen,Colonne e righe del foglio,Columnas y filas de hojas,Colunas e linhas de folha
+TIP_PARTICLE_TILES,"If the image contains multiple frames (a sprite sheet), use the X & Y values to define the column and row count","Si l'image contient plusieurs images (une feuille de sprite), utilisez les valeurs X et Y pour définir le nombre de colonnes et de lignes.","Wenn das Bild mehrere Frames (ein Sprite-Blatt) enthält, verwenden Sie die X- und Y-Werte, um die Anzahl der Spalten und Zeilen zu definieren","Se l'immagine contiene più fotogrammi (un foglio sprite), utilizzare i valori X e Y per definire la colonna e il conteggio delle righe","Si la imagen contiene varios fotogramas (una hoja de sprites), use los valores X e Y para definir el recuento de columnas y filas.","Se a imagem contiver vários quadros (uma folha de sprite), use os valores X e Y para definir a contagem de colunas e linhas"
+PROP_PARTICLE_ANIM_SPEED,Animation Speed,La vitesse d'animation,Animations Geschwindigkeit,Velocità di animazione,Velocidad de animación,Velocidade da animação
+TIP_PARTICLE_ANIM_SPEED,Speed that the particle's animation will play at,Vitesse que l'animation de la particule jouera à,"Geschwindigkeit, mit der die Animation des Partikels wiedergegeben wird",Velocità a cui giocherà l'animazione della particella,Velocidad que la animación de la partícula jugará en,Velocidade que a animação da partícula vai tocar em
+PROP_OFFSET,Center Pivot,,,,,
+TIP_OFFSET,Change the center point of the particle,,,,,
+PROP_LIFETIME_COLOR,Lifetime Colour,Couleur à vie,Lebenslange Farbe,Colore a vita,Color de por vida,Cor vitalícia
+TIP_LIFETIME_COLOR,Modulated colour of the particle over its lifetime,Couleur modulée de la particule au cours de sa vie,Modulierte Farbe des Partikels über seine Lebensdauer,Colore modulato della particella nel corso della sua vita,Color modulado de la partícula a lo largo de su vida útil,Cor modulada da partícula ao longo de sua vida útil
+PROP_PARTICLE_HUE_VARIATION,Hue Offset,,,,,
+TIP_PARTICLE_HUE_VARIATION,The hue offset in degrees. Can be used to cycle or vary the base lifetime colour,,,,,
+PROP_PARTICLE_ALIGN,Align to Velocity,Aligner sur la vitesse,Richten Sie sich auf Velocity aus,Allinea a Velocity,Alinear a la velocidad,Alinhar à velocidade
+TIP_PARTICLE_ALIGN,Aligns the particle to the direction (velocity) its travelling in,Aligne la particule à la direction (vitesse) dans laquelle elle se déplace,"Richtet das Partikel an der Richtung (Geschwindigkeit) aus, in der es sich bewegt",Allinea la particella alla direzione (velocità) in cui viaggia,Alinea la partícula según la dirección (velocidad) en la que viaja,Alinha a partícula para a direção (velocidade) sua viagem em
+PROP_PARTICLE_INIT_ANGLE,Initial Angle,Angle initial,Anfangswinkel,Angolo iniziale,Ángulo inicial,Ângulo inicial
+TIP_PARTICLE_INIT_ANGLE,Inital rotation of the particle,Rotation initiale de la particule,Initale Rotation des Partikels,Rotazione iniziale della particella,Rotación inicial de la partícula,Rotação inicial da partícula
+PROP_PARTICLE_ANGLE_OFFSET,Angle Offset,Décalage d'angle,Winkelversatz,Offset angolo,Desplazamiento de ángulo,Desvio de ângulo
+TIP_PARTICLE_ANGLE_OFFSET,"An offset added to the initial angle after randomness has been applied.
+Useful for when you want the randomness to go between a range other than 0 to initial rotation angle
+I.e Initial rotation = 90, Randomness = 1, Offset = -45 will result in a random angle of -45 to 45 instead of 0 to 90","Un décalage ajouté à l’angle initial après que l’aléa a été appliqué.
+Utile lorsque vous voulez que le caractère aléatoire soit compris entre une plage autre que 0 et l'angle de rotation initial
+Ie rotation initiale = 90, Randomness = 1, Offset = -45 donnera un angle aléatoire de -45 à 45 au lieu de 0 à 90 ","Ein Offset, der dem Anfangswinkel nach Zufälligkeit hinzugefügt wurde, wurde angewendet.
+Nützlich, wenn Sie möchten, dass die Zufälligkeit zwischen einem anderen Bereich als 0 und dem ursprünglichen Drehwinkel liegt
+Ie Anfangsrotation = 90, Zufälligkeit = 1, Offset = -45 ergibt einen zufälligen Winkel von -45 bis 45 anstelle von 0 bis 90 ","Un offset aggiunto all'angolo iniziale dopo che è stata applicata la casualità.
+Utile per quando vuoi che la casualità passi tra un range diverso da 0 all'angolo di rotazione iniziale
+Cioè rotazione iniziale = 90, Randomness = 1, Offset = -45 genererà un angolo casuale da -45 a 45 invece che da 0 a 90 ","Se ha aplicado un desplazamiento al ángulo inicial después de la aleatoriedad.
+Útil para cuando quiere que la aleatoriedad vaya entre un rango distinto de 0 al ángulo de rotación inicial
+Es decir, rotación inicial = 90, Aleatoriedad = 1, Desplazamiento = -45 dará como resultado un ángulo aleatorio de -45 a 45 en lugar de 0 a 90 ","Um deslocamento adicionado ao ângulo inicial após a aleatoriedade foi aplicado.
+Útil para quando você deseja que a aleatoriedade entre um intervalo diferente de 0 ao ângulo de rotação inicial
+Ou seja, rotação inicial = 90, aleatoriedade = 1, Offset = -45 resultará em um ângulo aleatório de -45 a 45 em vez de 0 a 90 "
+PROP_ANGULAR_VELOCITY_CURVE,Angular Velocity Curve,Courbe de vitesse angulaire,Winkelgeschwindigkeitskurve,Curva di velocità angolare,Curva de velocidad angular,Curva de Velocidade Angular
+TIP_ANGULAR_VELOCITY_CURVE,The angular velocity added to the particle's rotation over lifetime,La vitesse angulaire ajoutée à la rotation de la particule au cours de la vie,Die Winkelgeschwindigkeit addiert sich zur Rotation der Partikel über die Lebensdauer,La velocità angolare aggiunta alla rotazione della particella nel corso della vita,La velocidad angular añadida a la rotación de la partícula durante la vida útil,A velocidade angular adicionada à rotação da partícula ao longo da vida
+PROP_ANGULAR_VELOCITY_RANDOM,Angular Velocity Rand,Vitesse angulaire Rand,Winkelgeschwindigkeit Rand,Angular Velocity Rand,Angular Velocity Rand,Rand de velocidade angular
+TIP_ANGULAR_VELOCITY_RANDOM,Randomness of each particle's angular velocity,Caractère aléatoire de la vitesse angulaire de chaque particule,Zufall der Winkelgeschwindigkeit jedes Partikels,Casualità della velocità angolare di ciascuna particella,Aleatoriedad de la velocidad angular de cada partícula,Aleatoriedade da velocidade angular de cada partícula
+PROP_LIFETIME_ANGLE,Angle Curve,Courbe d'angle,Winkelkurve,Curva d'angolo,Curva de ángulo,Curva de ângulo
+TIP_LIFETIME_ANGLE,Use this to directly set the angle of rotation over lifetime,Utilisez ceci pour définir directement l'angle de rotation sur la durée de vie,"Verwenden Sie dies, um den Drehwinkel über die Lebensdauer direkt einzustellen",Usalo per impostare direttamente l'angolo di rotazione nel corso della vita,Use esto para establecer directamente el ángulo de rotación durante la vida útil,Use isso para definir diretamente o ângulo de rotação ao longo da vida
+PROP_LIFETIME_SIZE,Size Curve,Taille courbe,Größe Kurve,Curva delle dimensioni,Curva de tamaño,Curva de tamanho
+TIP_LIFETIME_SIZE,Size of particle over it's lifetime,Taille de particule au cours de sa vie,Größe des Partikels über seine Lebensdauer,Dimensione della particella nel corso della sua vita,Tamaño de la partícula durante su vida útil,Tamanho da partícula durante a sua vida
+PROP_SIZE_RANDOM,Size Rand,Taille Rand,Größe Rand,Dimensione Rand,Tamaño Rand,Rand de tamanho
+TIP_SIZE_RANDOM,Randomness of each particle's size,Caractère aléatoire de la taille de chaque particule,Zufälligkeit der Größe jedes Partikels,Casualità delle dimensioni di ogni particella,Aleatoriedad del tamaño de cada partícula,Aleatoriedade do tamanho de cada partícula
+PROP_LIFETIME_WIDTH,Width Multiplier Curve,Courbe de multiplicateur de largeur,Breite Multiplikatorkurve,Curva moltiplicatore di larghezza,Curva multiplicadora de ancho,Curva de multiplicador de largura
+TIP_LIMETIME_WIDTH,Width of particle over it's lifetime (multiplier of lifetime size parameter),Largeur de particule sur toute sa durée de vie (multiplicateur du paramètre taille de durée de vie),Breite des Partikels über seine Lebensdauer (Multiplikator der Lebensdauergröße),Larghezza della particella al di sopra della sua durata (moltiplicatore del parametro delle dimensioni del ciclo di vita),Ancho de la partícula a lo largo de su vida útil (multiplicador del parámetro de tamaño de por vida),Largura da partícula acima da sua vida útil (multiplicador do parâmetro de tamanho da vida útil)
+PROP_LIFETIME_HEIGHT,Height Multiplier Curve,Courbe de multiplicateur de hauteur,Höhen-Multiplikator-Kurve,Curva del moltiplicatore di altezza,Curva multiplicadora de altura,Curva de multiplicador de altura
+TIP_LIFETIME_HEIGHT,Height of particle over it's lifetime (multiplier of lifetime size parameter),Hauteur de la particule sur sa durée de vie (multiplicateur du paramètre de taille de durée de vie),Höhe des Partikels über seine Lebensdauer (Multiplikator der Lebensdauergröße),Altezza della particella al di sopra della sua durata (moltiplicatore del parametro delle dimensioni del ciclo di vita),Altura de la partícula durante su vida útil (multiplicador del parámetro de tamaño de por vida),Altura da partícula durante a sua vida útil (multiplicador do parâmetro de tamanho da vida útil)
+BUTTON_GENERAL,General,Général,Allgemeines,Generale,General,Geral
+BUTTON_SHAPE,Shape,Forme,Gestalten,Forma,Forma,Forma
+BUTTON_TEXTURE,Texture,Texture,Textur,Struttura,Textura,Textura
+BUTTON_VELOCITY,Velocity,Rapidité,Geschwindigkeit,Velocità,Velocidad,Velocidade
+BUTTON_COLOR,Colour,Couleur,Farbe,Colore,Color,Cor
+BUTTON_SIZE,Size,Taille,Größe,Dimensione,tamaño,Tamanho
+BUTTON_ANGLE,Angle,Angle,Winkel,Angolo,Ángulo,Ângulo
+BUTTON_FLOW_MAP,Flow Map,Carte de flux,Flussdiagramm,Mappa del flusso,Mapa de flujo,Mapa de fluxo
+BUTTON_MOTION,Motion,Mouvement,Bewegung,Movimento,Movimiento,Movimento
+TIP_FILTERED,Use bilinear texture smoothing,Utilisez le lissage de texture bilinéaire,Verwenden Sie bilineare Texturglättung,Utilizzare una levigatura a struttura bilineare,Use suavizado de textura bilineal,Use suavização de textura bilinear
+KEY_FILTERED,Filtered,Filtré,Gefiltert,filtrato,Filtrado,Filtrado
+KEY_SELECT_TEXTURE,Select a Texture,Sélectionnez une texture,Wählen Sie eine Textur,Seleziona una Texture,Seleccione una textura,Selecione uma textura
+KEY_CHOOSE_DIR,Select Base Drive/Folder...,Sélectionnez le dossier de texture ...,Wählen Sie Texturordner ...,Seleziona la cartella Texture ...,Seleccionar carpeta de textura ...,Selecione a pasta de textura ...
+KEY_ENGLISH,English,Anglais,Englisch,Inglese,Inglés,Inglês
+KEY_FRENCH,French,français,Französisch,francese,francés,francês
+KEY_GERMAN,German,allemand,Deutsche,Tedesco,alemán,alemão
+KEY_ITALIAN,Italian,italien,Italienisch,italiano,italiano,italiano
+KEY_SPANISH,Spanish,Espanol,Spanisch,spagnolo,Español,espanhol
+KEY_PORTUGUESE,Portuguese,Portugais,Portugiesisch,portoghese,portugués,Português
+KEY_FILE_MENU,File,Fichier,Datei,File,Archivo,Arquivo
+KEY_FILE_NEW_PROJECT,New Project,Nouveau projet,Neues Projekt,Nuovo progetto,Nuevo proyecto,Novo projeto
+KEY_FILE_SAVE,Save,sauvegarder,sparen,Salvare,Salvar,Salve
+KEY_FILE_LOAD,Load,Charge,Belastung,Caricare,Carga,Carga
+KEY_FILE_IMPORT,Import,Importer,Einführen,Importare,Importar,Importar
+KEY_FILE_QUIT,Quit,Quitter,Verlassen,Smettere,Dejar,Sair
+KEY_LANG_MENU,Language,La langue,Sprache,linguaggio,Idioma,Língua
+KEY_EMITTER_PANEL,Emitters,Émetteurs,Emitter,emettitori,Emisores,Emissores
+KEY_DUPLICATE,Duplicate,Dupliquer,Duplikat,Duplicare,Duplicar,Duplicado
+KEY_START_ALL,Play All,Jouer à tous,Alle wiedergeben,Giocare tutto,Jugar todo,Reproduzir tudo
+KEY_EMITTER_PROPERTIES,Emitter Properties,Propriétés de l'émetteur,Emittereigenschaften,Proprietà dell'emettitore,Emisor de propiedades,Propriedades do Emissor
+KEY_NAME,Name,prénom,Name,Nome,Nombre,Nome
+KEY_LOCAL_PARTICLES,Local,Local,Lokal,Locale,Local,Local
+KEY_LOOP,Repeat,Répéter,Wiederholen,Ripetere,Repetir,Repetir
+KEY_BLEND_MODE,Blend,Mélange,Mischung,Miscela,Mezcla,Mistura
+KEY_BLEND_MODE_NORMAL,Normal,Ordinaire,Normal,Normale,Normal,Normal
+KEY_BLEND_MODE_ADD,Add,Ajouter,Hinzufügen,Inserisci,Añadir,Adicionar
+KEY_BLEND_MODE_SUB,Subtract,Soustraire,Subtrahieren,Sottrarre,Sustraer,Subtrair
+KEY_LAYER,Layer,Couche,Schicht,Strato,Capa,Camada
+KEY_SOURCE_LABEL,Source,La source,Quelle,fonte,Fuente,Fonte
+KEY_OUTPUT_LABEL,Output,Sortie,Ausgabe,Produzione,Salida,Saída
+KEY_RENDER_TAB,Render,Rendre,Machen,rendere,Hacer,Render
+KEY_EDIT_MENU,Edit,modifier,Bearbeiten,modificare,Editar,Editar
+KEY_UNDO,Undo,annuler,Rückgängig machen,Disfare,Deshacer,Desfazer
+KEY_REDO,Redo,Refaire,Wiederholen,Rifare,Rehacer,Refazer
+KEY_VIEW_MENU,View,Vue,Aussicht,vista,Ver,Visão
+VIEW_SET_BG_COLOR,Set Background Colour,Définir la couleur de fond,Hintergrundfarbe einstellen,Imposta il colore di sfondo,Establecer color de fondo,Definir cor de fundo
+VIEW_SET_BG_IMAGE,Load Background Image,Charger l'image d'arrière-plan,Hintergrundbild laden,Carica l'immagine di sfondo,Cargar imagen de fondo,Carregar Imagem de Fundo
+VIEW_CLEAR_BG,Clear Background,Fond clair,Hintergrund löschen,Sfondo chiaro,Fondo claro,Fundo claro
+VIEW_RESET_CAMERA,Reset Camera,Réinitialiser la caméra,Kamera zurücksetzen,Ripristina fotocamera,Restablecer cámara,Redefinir Câmera
+TIP_ADD_EMITTER,Create a new emitter,Créer un nouvel émetteur,Erstelle einen neuen Emitter,Crea un nuovo emettitore,Crea un nuevo emisor,Crie um novo emissor
+KEY_ADD,Add,Ajouter,Hinzufügen,Inserisci,Añadir,Adicionar
+TIP_REMOVE_EMITTER,Remove the selected emitter,Supprimer l'émetteur sélectionné,Entfernen Sie den ausgewählten Emitter,Rimuovi l'emettitore selezionato,Eliminar el emisor seleccionado,Remova o emissor selecionado
+KEY_REMOVE,Remove,Retirer,Löschen,Rimuovere,retirar,Remover
+TIP_DUPLICATE,Duplicate the selected emitter,Dupliquer l'émetteur sélectionné,Duplizieren Sie den ausgewählten Emitter,Duplica l'emettitore selezionato,Duplicar el emisor seleccionado,Duplicar o emissor selecionado
+TIP_START_SINGLE,Start this emitter only,Démarrer cet émetteur seulement,Starten Sie nur diesen Sender,Avvia solo questo emettitore,Comience este emisor solamente,Inicie este emissor apenas
+KEY_START_SINGLE,Play Selected,Jouer sélectionné,Ausgewählt spielen,Gioca selezionato,Play Selected,Play Selected
+TIP_START_ALL,Start all emitters,Démarrer tous les émetteurs,Starten Sie alle Emitter,Avvia tutti gli emettitori,Comience todos los emisores,Comece todos os emissores
+TIP_LOCKED,Lock the selected emitter so that it can't be selected or moved in the viewport,,,,,
+KEY_LOCKED,Locked,,,,,
+TIP_VISIBLE,Show or hide the currently selected emitter,,,,,
+KEY_VISIBLE,Visible,,,,,
+TIP_SEAMLESS,"Enable this for seamless looping when rendering.
+For this to work correctly, make sure the Preprocess parameter is the same value as the particle lifetime.","Activer cette option pour une boucle transparente lors du rendu.
+Pour que cela fonctionne correctement, assurez-vous que le paramètre Preprocess a la même valeur que la durée de vie des particules.","Aktivieren Sie dies für nahtloses Looping beim Rendern.
+Damit dies ordnungsgemäß funktioniert, stellen Sie sicher, dass der Vorverarbeitungsparameter den gleichen Wert wie die Partikellebensdauer hat. ","Abilita questa opzione per il loop continuo durante il rendering.
+Perché funzioni correttamente, assicurati che il parametro Preprocess abbia lo stesso valore della durata della particella. ","Habilite esto para un bucle sin interrupciones al renderizar.
+Para que esto funcione correctamente, asegúrese de que el parámetro Preproceso tenga el mismo valor que la vida útil de la partícula .","Ativar isso para loop contínuo ao renderizar.
+Para que isso funcione corretamente, verifique se o parâmetro Preprocess é o mesmo valor da duração da partícula. "
+KEY_SEAMLESS,Seamless Loop,Boucle sans couture,Nahtlose Schleife,Loop senza soluzione di continuità,Seamless Loop,Loop sem costura
+TIP_LOCAL_PARTICLES,Particles positions are local to the emitter that created them,Les positions des particules sont locales à l'émetteur qui les a créées,"Partikelpositionen sind lokal für den Emitter, der sie erzeugt hat",Le posizioni delle particelle sono locali rispetto all'emettitore che le ha create,Las posiciones de las partículas son locales para el emisor que las creó,Posições de partículas são locais para o emissor que as criou
+TIP_LOOP,"If enabled, the emitter will restart when it's duration time is reached","Si activé, l'émetteur redémarrera une fois la durée atteinte","Wenn aktiviert, wird der Sender neu gestartet, wenn die Dauer erreicht ist","Se abilitato, l'emettitore si riavvierà quando viene raggiunta la durata","Si está habilitado, el emisor se reiniciará cuando se alcance el tiempo de duración","Se ativado, o emissor será reiniciado quando o tempo de duração for atingido"
+TIP_BLEND_MODE,How the particles are blended together when they overlap,Comment les particules se mélangent-elles lorsqu'elles se chevauchent,"Wie werden die Partikel miteinander vermischt, wenn sie sich überlappen?",Come le particelle si mescolano quando si sovrappongono,Cómo se mezclan las partículas juntas cuando se superponen,Como as partículas são misturadas quando se sobrepõem
+TIP_LAYER,The order the emitters and their particles are drawn. A higher value will be drawn on top of a lower value,L'ordre dans lequel les émetteurs et leurs particules sont dessinés. Une valeur plus élevée sera tirée sur une valeur inférieure,"Die Reihenfolge, in der die Emitter und ihre Partikel gezeichnet werden. Ein höherer Wert wird über einen niedrigeren Wert hinaus gezogen",L'ordine in cui sono disegnati gli emettitori e le loro particelle. Un valore più alto verrà disegnato sopra un valore più basso,El orden en que se emiten los emisores y sus partículas. Se dibujará un valor más alto en la parte superior de un valor inferior,A ordem em que os emissores e suas partículas são desenhados. Um valor mais alto será desenhado em cima de um valor menor
+KEY_EFFECTS_TAB,Effects,Effets,Auswirkungen,effetti,Efectos,Efeitos
+TIP_OUTPUT_NODE,Anything connected to this will display in the output window,Tout ce qui est connecté à ceci s'affichera dans la fenêtre de sortie,"Alles, was damit verbunden ist, wird im Ausgabefenster angezeigt",Tutto ciò che è collegato a questo verrà visualizzato nella finestra di output,Cualquier cosa conectada a esto se mostrará en la ventana de salida,Qualquer coisa conectada a isso será exibida na janela de saída
+TIP_SOURCE_NODE,"This outputs the source image, connect it to an effect node to process the image,
+ or connect directly to the output node for an unprocessed image","Cela génère l'image source, connectez-le à un nœud d'effet pour traiter l'image,
+ou se connecter directement au noeud de sortie pour une image non traitée ","Dies gibt das Quellbild aus, verbindet es mit einem Effektknoten, um das Bild zu verarbeiten,
+oder direkt mit dem Ausgabeknoten für ein unverarbeitetes Bild verbinden ","Questo produce l'immagine sorgente, collegandola a un nodo effetto per elaborare l'immagine,
+oppure connettersi direttamente al nodo di output per un'immagine non elaborata ","Esto genera la imagen de origen, conéctala a un nodo de efecto para procesar la imagen,
+o conectarse directamente al nodo de salida para una imagen sin procesar ","Isso gera a imagem de origem, conecte-a a um nó de efeito para processar a imagem,
+ou conecte-se diretamente ao nó de saída para uma imagem não processada "
+TIP_NODE_LOAD,Load a previously saved effect node configuration,,,,,
+TIP_RENDER_WIDTH,The width of each frame of animation,La largeur de chaque image d'animation,Die Breite jedes Animationsrahmens,La larghezza di ogni fotogramma di animazione,El ancho de cada cuadro de animación,A largura de cada quadro de animação
+RENDER_FRAME_WIDTH,Output Frame Width,Largeur du cadre de sortie,Ausgangsrahmenbreite,Larghezza frame di output,Ancho del marco de salida,Largura do quadro de saída
+TIP_RENDER_HEIGHT,The height of each frame of animation,La hauteur de chaque cadre d'animation,Die Höhe jedes Frame der Animation,L'altezza di ogni fotogramma di animazione,La altura de cada cuadro de animación,A altura de cada quadro de animação
+RENDER_FRAME_HEIGHT,Output Frame Height,Hauteur du cadre de sortie,Ausgabeframe Höhe,Altezza frame di output,Altura del cuadro de salida,Altura do quadro de saída
+TIP_RENDER_FRAMES,The length of the animation in frames,La longueur de l'animation dans les cadres,Die Länge der Animation in Frames,La lunghezza dell'animazione nei frame,La duración de la animación en marcos,O comprimento da animação em quadros
+RENDER_FRAMES,Output Frame Count,Nombre de trames de sortie,Anzahl der Ausgabe-Frames,Conteggio frame di output,Recuento de marcos de salida,Contagem de quadros de saída
+TIP_RENDER_FPS,The framerate of the animation. Higher values will appear smoother,Le framerate de l'animation. Des valeurs plus élevées apparaîtront plus lisses,Die Bildfrequenz der Animation. Höhere Werte erscheinen glatter,Il framerate dell'animazione. I valori più alti appariranno più agevoli,La velocidad de fotogramas de la animación. Los valores más altos aparecerán más suaves,O framerate da animação. Valores mais altos parecerão mais suaves
+RENDER_FPS,Output Frames Per Second,Images de sortie par seconde,Ausgabe Frames pro Sekunde,Frame di output al secondo,Marcos de salida por segundo,Quadros de saída por segundo
+TIP_RENDER_WAIT,"Run the simulation for this many frames before capturing the output.
+Useful for creating seamless looping effects that use motion like sin & cos","Exécutez la simulation pour ces nombreuses images avant de capturer la sortie.
+Utile pour créer des effets de boucle transparents qui utilisent le mouvement comme sin & cos","Führen Sie die Simulation für diese vielen Frames aus, bevor Sie die Ausgabe erfassen.
+Nützlich für die Erstellung von nahtlosen Looping-Effekten, die Bewegungen wie sin & cos verwenden. ","Esegui la simulazione per questo numero di fotogrammi prima di catturare l'output.
+Utile per creare effetti di loop continuo che utilizzano il movimento come sin & cos ","Ejecute la simulación para esta cantidad de cuadros antes de capturar la salida.
+Útil para crear efectos de bucle sin interrupciones que usan movimiento como sin & cos ","Execute a simulação para esses muitos quadros antes de capturar a saída.
+Útil para criar efeitos de loop sem costura que usam movimento como sin & cos "
+RENDER_WAIT,Delay Capture (in frames),Retarder la capture (en images),Verzögerungserfassung (in Bildern),Ritardo Cattura (in frame),Captura de retardo (en cuadros),Captura de atraso (em quadros)
+TIP_FINAL_SIZE,The size of the exported animation sheet,La taille de la feuille d'animation exportée,Die Größe des exportierten Animationsblattes,La dimensione del foglio di animazione esportato,El tamaño de la hoja de animación exportada,O tamanho da folha de animação exportada
+RENDER_TEX_SIZE,Texture Size,Taille de la texture,Texturgröße,Dimensione della trama,Tamaño de la textura,Tamanho da textura
+TIP_RENDER_BUTTON,Begin rendering the animation,Commencer le rendu de l'animation,Beginnen Sie mit dem Rendern der Animation,Inizia il rendering dell'animazione,Comience a renderizar la animación,Comece a renderizar a animação
+RENDER_BUTTON,Render,Rendre,Machen,rendere,Hacer,Render
+KEY_PREVIEW_DIALOG,Preview,Aperçu,Vorschau,Anteprima,Avance,Visualizar
+TIP_PREVIEW,Preview of the rendered animation,Aperçu de l'animation rendue,Vorschau der gerenderten Animation,Anteprima dell'animazione renderizzata,Vista previa de la animación renderizada,Visualização da animação renderizada
+PLAY_ANIM,Play,Jouer,abspielen,Giocare,Jugar,Toque
+STOP_ANIM,Stop,Arrêtez,Halt,Stop,Detener,Pare
+TIP_SAVE_SCALE,The animation will be scaled by this value when it is saved. 100% is the default (no change),L'animation sera mise à l'échelle par cette valeur lorsqu'elle est enregistrée. 100% est la valeur par défaut (pas de changement),Die Animation wird beim Speichern um diesen Wert skaliert. 100% ist der Standardwert (keine Änderung),L'animazione verrà ridimensionata da questo valore quando viene salvata. 100% è l'impostazione predefinita (nessuna modifica),La animación se escalará según este valor cuando se guarde. 100% es el valor predeterminado (sin cambios),A animação será dimensionada por esse valor quando for salva. 100% é o padrão (sem alteração)
+RENDER_SCALE,Output Scale,Echelle de sortie,Ausgabeskalierung,Scala di uscita,Escala de salida,Escala de Saída
+SPRITE_SHEET,Sprite Sheet,Feuille de Sprite,Sprite Blatt,Foglio Sprite,Hoja de sprites,Folha de sprite
+MULTIPLE_IMAGES,Individual Images,Images individuelles,Einzelne Bilder,Immagini individuali,Imágenes individuales,Imagens individuais
+CURRENT_FRAME,Current Frame,Cadre actuel,Aktueller Frame,Frame corrente,Marco actual,Quadro atual
+TIP_SAVE_BUTTON,Save the rendered animation as an image,Enregistrer l'animation rendue sous forme d'image,Speichern Sie die gerenderte Animation als Bild,Salva l'animazione renderizzata come un'immagine,Guarde la animación renderizada como una imagen,Salve a animação renderizada como uma imagem
+SAVE_BUTTON,Save,sauvegarder,sparen,Salvare,Salvar,Salve 
+MENU_ADD_NODE,Add Effect  ,Ajouter un effet  ,Effekt hinzufügen  ,Aggiungi effetto  ,Agregar efecto  ,Adicionar efeito  
+KEY_RENDER_FRAME_LABEL,Render Frame,Cadre de rendu,Rahmen rendern,Render Frame,Render Frame,Renderizar Quadro
+KEY_LEFT_CLICK_EXPLAIN,Left Click - Move Emitter or Background,Clic gauche - Déplacer l'émetteur ou l'arrière-plan,Linksklick - Emitter oder Hintergrund verschieben,Clic sinistro - Sposta emettitore o sfondo,Clic izquierdo - Mover emisor o fondo,Clique esquerdo - Mover emissor ou fundo
+KEY_RIGHT_CLICK_EXPLAIN,Right Click - Pan View,Clic droit - Vue panoramique,Rechtsklick - Schwenkansicht,Clic destro - Vista panoramica,Clic derecho - Vista Panorámica,Clique com o botão direito - Pan View
+KEY_WHEEL_EXPLAIN,Mouse Wheel (or +/- keys) - Zoom,Roue de la souris - Zoom,Mausrad - Zoom,Rotellina del mouse - Zoom,Rueda del mouse - Zoom,Roda do Mouse - Zoom
+KEY_MIN_VALUE,Min,Min,Mindest,min,Min.,Minuto
+KEY_MAX_VALUE,Max,Max,Max,Max,Max,Max
